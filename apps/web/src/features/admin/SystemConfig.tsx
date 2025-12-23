@@ -92,7 +92,7 @@ export function SystemConfig() {
                   <input 
                     type="text" 
                     className="input" 
-                    defaultValue="BrandName"
+                    defaultValue="Aithertech"
                     onChange={() => setHasChanges(true)}
                   />
                 </div>
@@ -101,7 +101,7 @@ export function SystemConfig() {
                   <input 
                     type="email" 
                     className="input" 
-                    defaultValue="support@brandname.com"
+                    defaultValue="support@aithertech.com"
                     onChange={() => setHasChanges(true)}
                   />
                 </div>

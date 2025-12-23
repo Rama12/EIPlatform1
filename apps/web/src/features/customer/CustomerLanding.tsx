@@ -42,7 +42,7 @@ export function CustomerLanding() {
             <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-primary-500/10 overflow-hidden border border-surface-200">
               <img src={logo} alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <img src={brandname} alt="Brand Name" className="h-8 w-auto object-contain" />
+            <img src={brandname} alt="AIthertech" className="h-8 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-4">
             <Link to="/customer/dashboard" className="btn-ghost">Sign In</Link>
@@ -129,7 +129,7 @@ export function CustomerLanding() {
               Ready to Get Started?
             </h2>
             <p className="text-surface-600 mb-8 max-w-xl mx-auto">
-              Join thousands of satisfied customers who trust BrandName for their electronics repair needs.
+              Join thousands of satisfied customers who trust Aithertech for their electronics repair needs.
             </p>
             <Link to="/customer/dashboard" className="btn-primary btn-lg">
               Create Your Account
@@ -146,7 +146,7 @@ export function CustomerLanding() {
             <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-surface-100 overflow-hidden">
               <img src={logo} alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="text-surface-600 text-sm">BrandName &copy; 2024</span>
+            <span className="text-surface-600 text-sm">Aithertech &copy; 2024</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-surface-500">
             <a href="#" className="hover:text-surface-900 transition-colors">Privacy</a>

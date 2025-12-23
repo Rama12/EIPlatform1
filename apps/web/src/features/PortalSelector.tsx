@@ -60,7 +60,7 @@ export function PortalSelector() {
             <img src={logo} alt="Logo" className="w-full h-full object-cover" />
           </div>
           <div className="flex justify-center mb-4">
-            <img src={brandname} alt="Brand Name" className="h-16 w-auto object-contain" />
+            <img src={brandname} alt="AIthertech" className="h-16 w-auto object-contain" />
           </div>
           <p className="text-xl text-surface-500 max-w-md">
             Electronics Repair Management System
