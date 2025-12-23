@@ -4,9 +4,7 @@ import {
   ChevronRight, 
   Clock, 
   Calendar as CalendarIcon,
-  CheckCircle2,
-  X,
-  Plus
+  CheckCircle2
 } from 'lucide-react'
 
 const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -233,6 +231,7 @@ export function AvailabilityCalendar() {
     </div>
   )
 }
+
 
 
 

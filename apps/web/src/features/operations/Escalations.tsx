@@ -6,7 +6,6 @@ import {
   Phone,
   ArrowRight,
   CheckCircle2,
-  XCircle,
   RefreshCw,
   Smartphone
 } from 'lucide-react'
@@ -224,6 +223,7 @@ export function Escalations() {
     </div>
   )
 }
+
 
 
 
