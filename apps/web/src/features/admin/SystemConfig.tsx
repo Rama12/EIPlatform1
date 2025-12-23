@@ -92,7 +92,7 @@ export function SystemConfig() {
                   <input 
                     type="text" 
                     className="input" 
-                    defaultValue="EI Platform"
+                    defaultValue="BrandName"
                     onChange={() => setHasChanges(true)}
                   />
                 </div>
@@ -101,7 +101,7 @@ export function SystemConfig() {
                   <input 
                     type="email" 
                     className="input" 
-                    defaultValue="support@eiplatform.com"
+                    defaultValue="support@brandname.com"
                     onChange={() => setHasChanges(true)}
                   />
                 </div>

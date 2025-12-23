@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { 
-  Zap, 
   ArrowRight, 
   Shield, 
   Clock, 
@@ -11,6 +10,8 @@ import {
   Tv,
   Headphones
 } from 'lucide-react'
+import logo from '../../assets/logo.jpg'
+import brandname from '../../assets/brandname.jpg'
 
 const features = [
   { icon: Clock, title: 'Fast Response', description: 'Average 2-hour response time for urgent repairs' },
@@ -38,10 +39,10 @@ export function CustomerLanding() {
         {/* Navigation */}
         <header className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-6">
           <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
-              <Zap className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-primary-500/10 overflow-hidden border border-surface-200">
+              <img src={logo} alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="font-display font-bold text-2xl text-surface-900">EI Platform</span>
+            <img src={brandname} alt="Brand Name" className="h-8 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-4">
             <Link to="/customer/dashboard" className="btn-ghost">Sign In</Link>
@@ -95,7 +96,7 @@ export function CustomerLanding() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-surface-900 mb-4">
-              Why Choose EI Platform?
+              Why Choose Aithertech Electronics?
             </h2>
             <p className="text-surface-600 max-w-xl mx-auto">
               We've reimagined electronics repair to be seamless, transparent, and reliable.
@@ -128,7 +129,7 @@ export function CustomerLanding() {
               Ready to Get Started?
             </h2>
             <p className="text-surface-600 mb-8 max-w-xl mx-auto">
-              Join thousands of satisfied customers who trust EI Platform for their electronics repair needs.
+              Join thousands of satisfied customers who trust BrandName for their electronics repair needs.
             </p>
             <Link to="/customer/dashboard" className="btn-primary btn-lg">
               Create Your Account
@@ -142,8 +143,10 @@ export function CustomerLanding() {
       <footer className="py-8 px-6 border-t border-surface-200 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Zap className="w-5 h-5 text-primary-600" />
-            <span className="text-surface-600 text-sm">EI Platform &copy; 2024</span>
+            <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-surface-100 overflow-hidden">
+              <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-surface-600 text-sm">BrandName &copy; 2024</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-surface-500">
             <a href="#" className="hover:text-surface-900 transition-colors">Privacy</a>

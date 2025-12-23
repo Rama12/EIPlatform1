@@ -4,12 +4,13 @@ import {
   Plus, 
   Clock, 
   User,
-  Zap,
   LogOut,
   Menu,
   X
 } from 'lucide-react'
 import { useState } from 'react'
+import logo from '../assets/logo.jpg'
+import brandname from '../assets/brandname.jpg'
 
 const navItems = [
   { path: '/customer/dashboard', label: 'Dashboard', icon: Home },
@@ -34,12 +35,10 @@ export function CustomerLayout() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
-                <Zap className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden border border-surface-200">
+                <img src={logo} alt="Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="font-display font-semibold text-surface-900 hidden sm:block">
-                EI Platform
-              </span>
+              <img src={brandname} alt="Brand Name" className="h-6 w-auto object-contain hidden sm:block" />
             </Link>
 
             {/* Desktop Navigation */}

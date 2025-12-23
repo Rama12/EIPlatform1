@@ -4,9 +4,10 @@ import {
   Wrench, 
   LayoutDashboard, 
   Shield,
-  ChevronRight,
-  Zap
+  ChevronRight
 } from 'lucide-react'
+import logo from '../assets/logo.jpg'
+import brandname from '../assets/brandname.jpg'
 
 const portals = [
   {
@@ -27,7 +28,7 @@ const portals = [
   },
   {
     name: 'Operations Dashboard',
-    description: 'Monitor calls, assign technicians, and manage escalations',
+    description: 'Monitor calls, assign technicians, manage escalations, and manage spares',
     icon: LayoutDashboard,
     path: '/operations/dashboard',
     color: 'from-violet-500 to-purple-400',
@@ -35,7 +36,7 @@ const portals = [
   },
   {
     name: 'Admin Panel',
-    description: 'Manage users, verify technicians, and configure the system',
+    description: 'Manage users, verify technicians, view spares inventory and configure the system',
     icon: Shield,
     path: '/admin/dashboard',
     color: 'from-rose-500 to-orange-400',
@@ -55,12 +56,12 @@ export function PortalSelector() {
       <div className="relative flex-1 flex flex-col items-center justify-center px-6 py-16">
         {/* Logo & Title */}
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/25">
-            <Zap className="w-10 h-10 text-white" />
+          <div className="inline-flex items-center justify-center w-24 h-24 mb-6 rounded-2xl bg-white shadow-lg shadow-primary-500/10 overflow-hidden">
+            <img src={logo} alt="Logo" className="w-full h-full object-cover" />
           </div>
-          <h1 className="text-5xl font-display font-bold text-surface-900 mb-4">
-            EI Platform
-          </h1>
+          <div className="flex justify-center mb-4">
+            <img src={brandname} alt="Brand Name" className="h-16 w-auto object-contain" />
+          </div>
           <p className="text-xl text-surface-500 max-w-md">
             Electronics Repair Management System
           </p>
@@ -108,7 +109,7 @@ export function PortalSelector() {
 
       {/* Footer */}
       <footer className="relative text-center py-6 text-surface-500 text-sm">
-        <p>EI Platform &copy; 2024. All rights reserved.</p>
+        <p>BrandName &copy; 2024. All rights reserved.</p>
       </footer>
     </div>
   )
