@@ -8,7 +8,6 @@ import {
   Bell,
   Search
 } from 'lucide-react'
-import logo from '../assets/logo_purple.jpg'
 import brandname from '../assets/brandname.jpg'
 
 const navItems = [
@@ -27,11 +26,8 @@ export function OperationsLayout() {
       <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-surface-200">
         {/* Logo */}
         <Link to="/" className="h-16 flex items-center gap-3 px-6 border-b border-surface-200 hover:bg-surface-50 transition-colors">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden border border-surface-200">
-            <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-          </div>
           <div>
-            <img src={brandname} alt="Brand Name" className="h-5 w-auto object-contain" />
+            <img src={brandname} alt="AIthertech" className="h-5 w-auto object-contain" />
             <span className="text-xs text-surface-500">Operations Center</span>
           </div>
         </Link>

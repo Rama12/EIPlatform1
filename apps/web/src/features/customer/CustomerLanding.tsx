@@ -10,7 +10,6 @@ import {
   Tv,
   Headphones
 } from 'lucide-react'
-import logo from '../../assets/logo.jpg'
 import brandname from '../../assets/brandname.jpg'
 
 const features = [
@@ -38,10 +37,7 @@ export function CustomerLanding() {
         
         {/* Navigation */}
         <header className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-6">
-          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-primary-500/10 overflow-hidden border border-surface-200">
-              <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-            </div>
+          <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
             <img src={brandname} alt="AIthertech" className="h-8 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-4">
@@ -143,9 +139,6 @@ export function CustomerLanding() {
       <footer className="py-8 px-6 border-t border-surface-200 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-surface-100 overflow-hidden">
-              <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-            </div>
             <span className="text-surface-600 text-sm">Aithertech &copy; 2024</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-surface-500">

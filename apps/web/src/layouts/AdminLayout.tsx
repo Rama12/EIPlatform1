@@ -9,7 +9,6 @@ import {
   ChevronDown
 } from 'lucide-react'
 import { useState } from 'react'
-import logo from '../assets/logo_red.jpg'
 import brandname from '../assets/brandname.jpg'
 
 const navItems = [
@@ -30,9 +29,6 @@ export function AdminLayout() {
       <aside className={`hidden lg:flex flex-col ${collapsed ? 'w-20' : 'w-64'} bg-white border-r border-surface-200 transition-all duration-300`}>
         {/* Logo */}
         <Link to="/" className="h-16 flex items-center gap-3 px-6 border-b border-surface-200 hover:bg-surface-50 transition-colors">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden border border-surface-200">
-            <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-          </div>
           {!collapsed && (
             <div className="flex flex-col">
               <img src={brandname} alt="Brand Name" className="h-5 w-auto object-contain" />
@@ -91,11 +87,8 @@ export function AdminLayout() {
 
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-surface-200 shadow-sm flex items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-surface-200 overflow-hidden">
-            <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-          </div>
-          <img src={brandname} alt="Brand Name" className="h-5 w-auto object-contain" />
+        <Link to="/" className="flex items-center">
+          <img src={brandname} alt="AIthertech" className="h-5 w-auto object-contain" />
         </Link>
         <div className="flex items-center gap-2">
           {navItems.slice(0, 4).map((item) => (

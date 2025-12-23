@@ -9,7 +9,6 @@ import {
   X
 } from 'lucide-react'
 import { useState } from 'react'
-import logo from '../assets/logo.jpg'
 import brandname from '../assets/brandname.jpg'
 
 const navItems = [
@@ -34,11 +33,8 @@ export function CustomerLayout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden border border-surface-200">
-                <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-              </div>
-              <img src={brandname} alt="Brand Name" className="h-6 w-auto object-contain hidden sm:block" />
+            <Link to="/" className="flex items-center">
+              <img src={brandname} alt="AIthertech" className="h-8 w-auto object-contain" />
             </Link>
 
             {/* Desktop Navigation */}
