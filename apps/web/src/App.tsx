@@ -38,7 +38,7 @@ import { PortalSelector } from './features/PortalSelector'
 
 function App() {
   return (
-    <div className="min-h-screen bg-surface-950">
+    <div className="min-h-screen bg-surface-100">
       <Routes>
         {/* Portal Selector */}
         <Route path="/" element={<PortalSelector />} />

@@ -27,17 +27,17 @@ export function CustomerLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-950">
+    <div className="min-h-screen bg-surface-100">
       {/* Top Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-surface-700/50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-surface-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
                 <Zap className="w-5 h-5 text-white" />
               </div>
-              <span className="font-display font-semibold text-white hidden sm:block">
+              <span className="font-display font-semibold text-surface-900 hidden sm:block">
                 EI Platform
               </span>
             </Link>
@@ -50,8 +50,8 @@ export function CustomerLayout() {
                   to={item.path}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     location.pathname === item.path
-                      ? 'bg-primary-600/20 text-primary-400'
-                      : 'text-surface-400 hover:bg-surface-800 hover:text-white'
+                      ? 'bg-primary-50 text-primary-700'
+                      : 'text-surface-600 hover:bg-surface-100 hover:text-surface-900'
                   }`}
                 >
                   <item.icon className="w-4 h-4" />
@@ -62,7 +62,7 @@ export function CustomerLayout() {
 
             {/* User Menu */}
             <div className="flex items-center gap-4">
-              <button className="hidden sm:flex items-center gap-2 text-surface-400 hover:text-white transition-colors">
+              <button className="hidden sm:flex items-center gap-2 text-surface-600 hover:text-surface-900 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />
                 </div>
@@ -71,7 +71,7 @@ export function CustomerLayout() {
               
               {/* Mobile Menu Button */}
               <button 
-                className="md:hidden p-2 text-surface-400 hover:text-white"
+                className="md:hidden p-2 text-surface-600 hover:text-surface-900"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -82,7 +82,7 @@ export function CustomerLayout() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-surface-700/50 bg-surface-900/95 backdrop-blur-lg">
+          <div className="md:hidden border-t border-surface-200 bg-white">
             <nav className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <Link
@@ -91,15 +91,15 @@ export function CustomerLayout() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                     location.pathname === item.path
-                      ? 'bg-primary-600/20 text-primary-400'
-                      : 'text-surface-400 hover:bg-surface-800 hover:text-white'
+                      ? 'bg-primary-50 text-primary-700'
+                      : 'text-surface-600 hover:bg-surface-100 hover:text-surface-900'
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
                   {item.label}
                 </Link>
               ))}
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-surface-400 hover:bg-surface-800 hover:text-white transition-all">
+              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-surface-600 hover:bg-surface-100 hover:text-surface-900 transition-all">
                 <LogOut className="w-5 h-5" />
                 Sign Out
               </button>
@@ -115,7 +115,3 @@ export function CustomerLayout() {
     </div>
   )
 }
-
-
-
-

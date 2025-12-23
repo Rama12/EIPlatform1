@@ -55,23 +55,23 @@ export function CallTracking() {
   const { callId } = useParams()
 
   return (
-    <div className="min-h-screen py-8 px-6 lg:px-10">
+    <div className="min-h-screen py-8 px-6 lg:px-10 bg-surface-100">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <Link to="/customer/dashboard" className="inline-flex items-center gap-2 text-surface-400 hover:text-white transition-colors mb-4">
+          <Link to="/customer/dashboard" className="inline-flex items-center gap-2 text-surface-500 hover:text-surface-900 transition-colors mb-4">
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
           </Link>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-display font-bold text-white">
+              <h1 className="text-3xl font-display font-bold text-surface-900">
                 Track Your Repair
               </h1>
-              <p className="text-surface-400 mt-1 font-mono">{callId}</p>
+              <p className="text-surface-500 mt-1 font-mono">{callId}</p>
             </div>
             <span className="badge-success text-sm px-4 py-1.5">
-              <span className="w-2 h-2 rounded-full bg-success-500 mr-2 animate-pulse-subtle" />
+              <span className="w-2 h-2 rounded-full bg-success-600 mr-2 animate-pulse-subtle" />
               In Progress
             </span>
           </div>
@@ -82,19 +82,19 @@ export function CallTracking() {
           <div className="lg:col-span-2 space-y-6">
             {/* Map Placeholder */}
             <div className="card overflow-hidden">
-              <div className="h-64 bg-gradient-to-br from-surface-800 to-surface-700 relative">
+              <div className="h-64 bg-gradient-to-br from-surface-100 to-surface-200 relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-12 h-12 text-primary-400 mx-auto mb-3" />
-                    <p className="text-surface-300">Live Map View</p>
-                    <p className="text-sm text-surface-500">Technician location tracking</p>
+                    <MapPin className="w-12 h-12 text-primary-600 mx-auto mb-3" />
+                    <p className="text-surface-600">Live Map View</p>
+                    <p className="text-sm text-surface-400">Technician location tracking</p>
                   </div>
                 </div>
                 {/* ETA Badge */}
-                <div className="absolute top-4 left-4 bg-surface-900/90 backdrop-blur rounded-xl px-4 py-2">
+                <div className="absolute top-4 left-4 bg-white shadow-md rounded-xl px-4 py-2 border border-surface-200">
                   <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-success-500" />
-                    <span className="text-sm font-medium text-white">ETA: 15 min</span>
+                    <Clock className="w-4 h-4 text-success-600" />
+                    <span className="text-sm font-medium text-surface-900">ETA: 15 min</span>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export function CallTracking() {
 
             {/* Timeline */}
             <div className="card p-6">
-              <h2 className="text-lg font-display font-semibold text-white mb-6">
+              <h2 className="text-lg font-display font-semibold text-surface-900 mb-6">
                 Status Timeline
               </h2>
               <div className="relative">
@@ -111,7 +111,7 @@ export function CallTracking() {
                     {/* Line */}
                     {index < timelineEvents.length - 1 && (
                       <div className={`absolute left-5 top-10 w-0.5 h-full -translate-x-1/2 ${
-                        event.status === 'completed' ? 'bg-success-500' : 'bg-surface-700'
+                        event.status === 'completed' ? 'bg-success-500' : 'bg-surface-200'
                       }`} style={{ height: 'calc(100% - 40px)', top: `${index * 80 + 40}px` }} />
                     )}
                     
@@ -121,7 +121,7 @@ export function CallTracking() {
                         ? 'bg-success-600'
                         : event.status === 'current'
                           ? 'bg-primary-600 animate-pulse-subtle'
-                          : 'bg-surface-700'
+                          : 'bg-surface-200'
                     }`}>
                       <event.icon className={`w-5 h-5 ${
                         event.status === 'pending' ? 'text-surface-400' : 'text-white'
@@ -132,13 +132,13 @@ export function CallTracking() {
                     <div className="flex-1 pt-1">
                       <div className="flex items-center justify-between">
                         <h3 className={`font-medium ${
-                          event.status === 'pending' ? 'text-surface-400' : 'text-white'
+                          event.status === 'pending' ? 'text-surface-400' : 'text-surface-900'
                         }`}>
                           {event.title}
                         </h3>
-                        <span className="text-sm text-surface-500">{event.time}</span>
+                        <span className="text-sm text-surface-400">{event.time}</span>
                       </div>
-                      <p className="text-sm text-surface-400 mt-0.5">{event.description}</p>
+                      <p className="text-sm text-surface-500 mt-0.5">{event.description}</p>
                     </div>
                   </div>
                 ))}
@@ -150,13 +150,13 @@ export function CallTracking() {
           <div className="space-y-6">
             {/* Technician Card */}
             <div className="card p-6">
-              <h3 className="text-sm font-medium text-surface-400 mb-4">Your Technician</h3>
+              <h3 className="text-sm font-medium text-surface-500 mb-4">Your Technician</h3>
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
                   <span className="text-xl font-semibold text-white">MJ</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-white">Mike Johnson</h4>
+                  <h4 className="text-lg font-semibold text-surface-900">Mike Johnson</h4>
                   <div className="flex items-center gap-1 mt-1">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
@@ -179,30 +179,30 @@ export function CallTracking() {
 
             {/* Device Info */}
             <div className="card p-6">
-              <h3 className="text-sm font-medium text-surface-400 mb-4">Device Details</h3>
+              <h3 className="text-sm font-medium text-surface-500 mb-4">Device Details</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-surface-400">Device</span>
-                  <span className="text-white">iPhone 14 Pro</span>
+                  <span className="text-surface-500">Device</span>
+                  <span className="text-surface-900">iPhone 14 Pro</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-surface-400">Issue</span>
-                  <span className="text-white">Cracked Screen</span>
+                  <span className="text-surface-500">Issue</span>
+                  <span className="text-surface-900">Cracked Screen</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-surface-400">Priority</span>
-                  <span className="text-warning-500 font-medium">Urgent</span>
+                  <span className="text-surface-500">Priority</span>
+                  <span className="text-warning-600 font-medium">Urgent</span>
                 </div>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="card p-6 bg-gradient-to-br from-accent-900/20 to-surface-800/50 border-accent-700/30">
-              <h3 className="text-sm font-medium text-surface-400 mb-3">Need Help?</h3>
-              <p className="text-sm text-surface-300 mb-4">
+            <div className="card p-6 bg-accent-50 border-accent-200">
+              <h3 className="text-sm font-medium text-surface-600 mb-3">Need Help?</h3>
+              <p className="text-sm text-surface-500 mb-4">
                 Having issues with your repair? Contact support or cancel the call.
               </p>
-              <button className="btn-ghost w-full text-accent-400 hover:bg-accent-600/20">
+              <button className="btn-ghost w-full text-accent-600 hover:bg-accent-100">
                 Contact Support
               </button>
             </div>
@@ -212,7 +212,3 @@ export function CallTracking() {
     </div>
   )
 }
-
-
-
-

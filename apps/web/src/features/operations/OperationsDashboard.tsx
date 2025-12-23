@@ -19,8 +19,8 @@ const metrics = [
     change: '+3', 
     trend: 'up',
     icon: PhoneCall,
-    color: 'text-primary-400',
-    bgColor: 'bg-primary-600/20',
+    color: 'text-primary-600',
+    bgColor: 'bg-primary-100',
   },
   { 
     label: 'In Queue', 
@@ -28,8 +28,8 @@ const metrics = [
     change: '-2', 
     trend: 'down',
     icon: Clock,
-    color: 'text-warning-500',
-    bgColor: 'bg-warning-500/20',
+    color: 'text-warning-600',
+    bgColor: 'bg-warning-50',
   },
   { 
     label: 'Available Techs', 
@@ -37,8 +37,8 @@ const metrics = [
     change: '+1', 
     trend: 'up',
     icon: Users,
-    color: 'text-success-500',
-    bgColor: 'bg-success-500/20',
+    color: 'text-success-600',
+    bgColor: 'bg-success-50',
   },
   { 
     label: 'Escalations', 
@@ -46,8 +46,8 @@ const metrics = [
     change: '+1', 
     trend: 'up',
     icon: AlertTriangle,
-    color: 'text-accent-400',
-    bgColor: 'bg-accent-500/20',
+    color: 'text-accent-600',
+    bgColor: 'bg-accent-50',
   },
 ]
 
@@ -73,23 +73,23 @@ const statusConfig = {
 
 export function OperationsDashboard() {
   return (
-    <div className="p-6 lg:p-10">
+    <div className="p-6 lg:p-10 bg-surface-100 min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">
+          <h1 className="text-3xl font-display font-bold text-surface-900 mb-1">
             Operations Dashboard
           </h1>
-          <p className="text-surface-400">
+          <p className="text-surface-500">
             Real-time overview of all repair operations
           </p>
         </div>
         <div className="flex items-center gap-3">
           <span className="badge-success">
-            <span className="w-2 h-2 rounded-full bg-success-500 mr-2 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-success-600 mr-2 animate-pulse" />
             Live
           </span>
-          <span className="text-surface-500 text-sm">
+          <span className="text-surface-400 text-sm">
             Updated: Just now
           </span>
         </div>
@@ -104,7 +104,7 @@ export function OperationsDashboard() {
                 <metric.icon className={`w-6 h-6 ${metric.color}`} />
               </div>
               <div className={`flex items-center gap-1 text-sm ${
-                metric.trend === 'up' ? 'text-success-500' : 'text-accent-400'
+                metric.trend === 'up' ? 'text-success-600' : 'text-accent-600'
               }`}>
                 {metric.trend === 'up' ? (
                   <TrendingUp className="w-4 h-4" />
@@ -114,8 +114,8 @@ export function OperationsDashboard() {
                 {metric.change}
               </div>
             </div>
-            <p className="text-3xl font-display font-bold text-white">{metric.value}</p>
-            <p className="text-sm text-surface-400 mt-1">{metric.label}</p>
+            <p className="text-3xl font-display font-bold text-surface-900">{metric.value}</p>
+            <p className="text-sm text-surface-500 mt-1">{metric.label}</p>
           </div>
         ))}
       </div>
@@ -123,15 +123,15 @@ export function OperationsDashboard() {
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Map View */}
         <div className="lg:col-span-2 card overflow-hidden">
-          <div className="p-4 border-b border-surface-700/50">
-            <h2 className="text-lg font-display font-semibold text-white">Live Map</h2>
+          <div className="p-4 border-b border-surface-200">
+            <h2 className="text-lg font-display font-semibold text-surface-900">Live Map</h2>
           </div>
-          <div className="h-80 bg-gradient-to-br from-surface-800 to-surface-700 relative">
+          <div className="h-80 bg-gradient-to-br from-surface-100 to-surface-200 relative">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <MapPin className="w-16 h-16 text-primary-500/50 mx-auto mb-3" />
-                <p className="text-surface-300 font-medium">Live Map View</p>
-                <p className="text-sm text-surface-500">Technicians & Active Calls</p>
+                <MapPin className="w-16 h-16 text-primary-400 mx-auto mb-3" />
+                <p className="text-surface-600 font-medium">Live Map View</p>
+                <p className="text-sm text-surface-400">Technicians & Active Calls</p>
               </div>
             </div>
             {/* Mock markers */}
@@ -140,22 +140,22 @@ export function OperationsDashboard() {
             <div className="absolute top-2/3 left-1/4 w-4 h-4 rounded-full bg-warning-500 border-2 border-white shadow-lg animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 w-4 h-4 rounded-full bg-success-500 border-2 border-white shadow-lg" />
           </div>
-          <div className="p-4 flex items-center justify-between bg-surface-800/50">
+          <div className="p-4 flex items-center justify-between bg-surface-50 border-t border-surface-200">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-success-500" />
-                <span className="text-sm text-surface-400">Available (12)</span>
+                <span className="text-sm text-surface-500">Available (12)</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-primary-500" />
-                <span className="text-sm text-surface-400">Busy (8)</span>
+                <span className="text-sm text-surface-500">Busy (8)</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-warning-500" />
-                <span className="text-sm text-surface-400">En Route (5)</span>
+                <span className="text-sm text-surface-500">En Route (5)</span>
               </div>
             </div>
-            <button className="text-sm text-primary-400 hover:text-primary-300">
+            <button className="text-sm text-primary-600 hover:text-primary-700">
               Expand Map
             </button>
           </div>
@@ -164,8 +164,8 @@ export function OperationsDashboard() {
         {/* Top Technicians */}
         <div className="card p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-display font-semibold text-white">Top Technicians</h2>
-            <Link to="/operations/technicians" className="text-sm text-primary-400 hover:text-primary-300">
+            <h2 className="text-lg font-display font-semibold text-surface-900">Top Technicians</h2>
+            <Link to="/operations/technicians" className="text-sm text-primary-600 hover:text-primary-700">
               View All
             </Link>
           </div>
@@ -178,8 +178,8 @@ export function OperationsDashboard() {
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-white truncate">{tech.name}</p>
-                  <p className="text-sm text-surface-400">{tech.jobs} jobs • ⭐ {tech.rating}</p>
+                  <p className="font-medium text-surface-900 truncate">{tech.name}</p>
+                  <p className="text-sm text-surface-500">{tech.jobs} jobs • ⭐ {tech.rating}</p>
                 </div>
                 <span className={`w-3 h-3 rounded-full ${
                   tech.status === 'available' ? 'bg-success-500' : 'bg-primary-500'
@@ -191,9 +191,9 @@ export function OperationsDashboard() {
 
         {/* Recent Calls */}
         <div className="lg:col-span-2 card">
-          <div className="p-4 border-b border-surface-700/50 flex items-center justify-between">
-            <h2 className="text-lg font-display font-semibold text-white">Recent Calls</h2>
-            <Link to="/operations/queue" className="text-sm text-primary-400 hover:text-primary-300 flex items-center gap-1">
+          <div className="p-4 border-b border-surface-200 flex items-center justify-between">
+            <h2 className="text-lg font-display font-semibold text-surface-900">Recent Calls</h2>
+            <Link to="/operations/queue" className="text-sm text-primary-600 hover:text-primary-700 flex items-center gap-1">
               View Queue
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -213,16 +213,16 @@ export function OperationsDashboard() {
               <tbody>
                 {recentCalls.map((call) => (
                   <tr key={call.id}>
-                    <td className="font-mono text-primary-400">{call.id}</td>
-                    <td>{call.customer}</td>
-                    <td className="text-surface-400">{call.device}</td>
+                    <td className="font-mono text-primary-600">{call.id}</td>
+                    <td className="text-surface-900">{call.customer}</td>
+                    <td className="text-surface-500">{call.device}</td>
                     <td>
                       <span className={statusConfig[call.status as keyof typeof statusConfig].class}>
                         {statusConfig[call.status as keyof typeof statusConfig].label}
                       </span>
                     </td>
-                    <td>{call.tech}</td>
-                    <td className="text-success-500 font-medium">{call.eta}</td>
+                    <td className="text-surface-600">{call.tech}</td>
+                    <td className="text-success-600 font-medium">{call.eta}</td>
                   </tr>
                 ))}
               </tbody>
@@ -232,48 +232,48 @@ export function OperationsDashboard() {
 
         {/* Performance */}
         <div className="card p-6">
-          <h2 className="text-lg font-display font-semibold text-white mb-4">Today's Performance</h2>
+          <h2 className="text-lg font-display font-semibold text-surface-900 mb-4">Today's Performance</h2>
           <div className="space-y-4">
             <div>
               <div className="flex justify-between text-sm mb-1">
-                <span className="text-surface-400">Avg Response Time</span>
-                <span className="text-success-500 font-medium">24 min</span>
+                <span className="text-surface-500">Avg Response Time</span>
+                <span className="text-success-600 font-medium">24 min</span>
               </div>
-              <div className="h-2 rounded-full bg-surface-700">
+              <div className="h-2 rounded-full bg-surface-200">
                 <div className="h-full w-3/4 rounded-full bg-success-500" />
               </div>
             </div>
             <div>
               <div className="flex justify-between text-sm mb-1">
-                <span className="text-surface-400">First-Time Fix Rate</span>
-                <span className="text-primary-400 font-medium">92%</span>
+                <span className="text-surface-500">First-Time Fix Rate</span>
+                <span className="text-primary-600 font-medium">92%</span>
               </div>
-              <div className="h-2 rounded-full bg-surface-700">
+              <div className="h-2 rounded-full bg-surface-200">
                 <div className="h-full w-[92%] rounded-full bg-primary-500" />
               </div>
             </div>
             <div>
               <div className="flex justify-between text-sm mb-1">
-                <span className="text-surface-400">Customer Satisfaction</span>
-                <span className="text-amber-400 font-medium">4.8/5</span>
+                <span className="text-surface-500">Customer Satisfaction</span>
+                <span className="text-amber-600 font-medium">4.8/5</span>
               </div>
-              <div className="h-2 rounded-full bg-surface-700">
+              <div className="h-2 rounded-full bg-surface-200">
                 <div className="h-full w-[96%] rounded-full bg-amber-500" />
               </div>
             </div>
           </div>
           
-          <div className="mt-6 pt-4 border-t border-surface-700">
+          <div className="mt-6 pt-4 border-t border-surface-200">
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <CheckCircle2 className="w-6 h-6 text-success-500 mx-auto mb-1" />
-                <p className="text-2xl font-bold text-white">47</p>
-                <p className="text-xs text-surface-400">Completed</p>
+                <CheckCircle2 className="w-6 h-6 text-success-600 mx-auto mb-1" />
+                <p className="text-2xl font-bold text-surface-900">47</p>
+                <p className="text-xs text-surface-500">Completed</p>
               </div>
               <div className="text-center">
-                <Timer className="w-6 h-6 text-primary-400 mx-auto mb-1" />
-                <p className="text-2xl font-bold text-white">31</p>
-                <p className="text-xs text-surface-400">In Progress</p>
+                <Timer className="w-6 h-6 text-primary-600 mx-auto mb-1" />
+                <p className="text-2xl font-bold text-surface-900">31</p>
+                <p className="text-xs text-surface-500">In Progress</p>
               </div>
             </div>
           </div>
@@ -282,7 +282,3 @@ export function OperationsDashboard() {
     </div>
   )
 }
-
-
-
-

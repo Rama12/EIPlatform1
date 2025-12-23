@@ -21,16 +21,16 @@ export function OperationsLayout() {
   const location = useLocation()
 
   return (
-    <div className="min-h-screen bg-surface-950 flex">
+    <div className="min-h-screen bg-surface-100 flex">
       {/* Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-surface-900 border-r border-surface-700/50">
+      <aside className="hidden lg:flex flex-col w-64 bg-white border-r border-surface-200">
         {/* Logo */}
-        <div className="h-16 flex items-center gap-3 px-6 border-b border-surface-700/50">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+        <div className="h-16 flex items-center gap-3 px-6 border-b border-surface-200">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-md">
             <Zap className="w-5 h-5 text-white" />
           </div>
           <div>
-            <span className="font-display font-semibold text-white block">EI Platform</span>
+            <span className="font-display font-semibold text-surface-900 block">EI Platform</span>
             <span className="text-xs text-surface-500">Operations Center</span>
           </div>
         </div>
@@ -55,38 +55,38 @@ export function OperationsLayout() {
         </nav>
 
         {/* Live Stats */}
-        <div className="mx-3 mb-4 p-4 rounded-xl bg-surface-800 border border-surface-700/50">
+        <div className="mx-3 mb-4 p-4 rounded-xl bg-surface-50 border border-surface-200">
           <div className="flex items-center gap-2 mb-3">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse-subtle" />
-            <span className="text-xs font-medium text-surface-400">Live Status</span>
+            <span className="text-xs font-medium text-surface-500">Live Status</span>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-surface-400">Active Calls</span>
-              <span className="font-medium text-white">24</span>
+              <span className="text-surface-500">Active Calls</span>
+              <span className="font-medium text-surface-900">24</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-surface-400">In Queue</span>
-              <span className="font-medium text-warning-500">7</span>
+              <span className="text-surface-500">In Queue</span>
+              <span className="font-medium text-warning-600">7</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-surface-400">Available Techs</span>
-              <span className="font-medium text-success-500">12</span>
+              <span className="text-surface-500">Available Techs</span>
+              <span className="font-medium text-success-600">12</span>
             </div>
           </div>
         </div>
 
         {/* User */}
-        <div className="p-4 border-t border-surface-700/50">
+        <div className="p-4 border-t border-surface-200">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center">
               <span className="text-sm font-medium text-white">SC</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-white truncate">Sarah Chen</p>
+              <p className="text-sm font-medium text-surface-900 truncate">Sarah Chen</p>
               <p className="text-xs text-surface-500">Operations Manager</p>
             </div>
-            <button className="p-2 text-surface-500 hover:text-white transition-colors">
+            <button className="p-2 text-surface-400 hover:text-surface-700 transition-colors">
               <LogOut className="w-5 h-5" />
             </button>
           </div>
@@ -96,10 +96,10 @@ export function OperationsLayout() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col">
         {/* Top Bar */}
-        <header className="h-16 border-b border-surface-700/50 glass flex items-center justify-between px-6">
+        <header className="h-16 border-b border-surface-200 bg-white shadow-sm flex items-center justify-between px-6">
           {/* Search */}
           <div className="relative w-80">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400" />
             <input 
               type="text" 
               placeholder="Search calls, technicians..." 
@@ -109,7 +109,7 @@ export function OperationsLayout() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <button className="relative p-2 text-surface-400 hover:text-white transition-colors">
+            <button className="relative p-2 text-surface-500 hover:text-surface-700 transition-colors">
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-accent-500" />
             </button>
@@ -120,8 +120,8 @@ export function OperationsLayout() {
                   to={item.path}
                   className={`p-2 rounded-lg transition-all ${
                     location.pathname === item.path
-                      ? 'bg-violet-600/20 text-violet-400'
-                      : 'text-surface-400 hover:bg-surface-800 hover:text-white'
+                      ? 'bg-violet-50 text-violet-700'
+                      : 'text-surface-500 hover:bg-surface-100 hover:text-surface-900'
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -139,7 +139,3 @@ export function OperationsLayout() {
     </div>
   )
 }
-
-
-
-

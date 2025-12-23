@@ -28,20 +28,20 @@ const devices = [
 
 export function CustomerLanding() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-surface-950 to-surface-950" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary-500/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-surface-50" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary-100/50 rounded-full blur-3xl" />
         
         {/* Navigation */}
         <header className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-glow">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
               <Zap className="w-6 h-6 text-white" />
             </div>
-            <span className="font-display font-bold text-2xl text-white">EI Platform</span>
+            <span className="font-display font-bold text-2xl text-surface-900">EI Platform</span>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/customer/dashboard" className="btn-ghost">Sign In</Link>
@@ -55,11 +55,11 @@ export function CustomerLanding() {
             <div className="badge-primary mb-6 animate-fade-in">
               Trusted by 10,000+ customers
             </div>
-            <h1 className="text-5xl lg:text-7xl font-display font-bold text-white leading-tight mb-6 animate-slide-up">
+            <h1 className="text-5xl lg:text-7xl font-display font-bold text-surface-900 leading-tight mb-6 animate-slide-up">
               Expert Electronics
               <span className="block text-gradient">Repair On Demand</span>
             </h1>
-            <p className="text-xl text-surface-300 mb-10 max-w-xl animate-slide-up" style={{ animationDelay: '100ms' }}>
+            <p className="text-xl text-surface-600 mb-10 max-w-xl animate-slide-up" style={{ animationDelay: '100ms' }}>
               Connect with certified technicians for fast, reliable repairs. 
               From smartphones to smart TVs — we fix it all at your doorstep.
             </p>
@@ -79,11 +79,11 @@ export function CustomerLanding() {
             {devices.map((device, i) => (
               <div 
                 key={device.label}
-                className="w-24 h-24 rounded-2xl bg-surface-800/50 backdrop-blur border border-surface-700/50 flex flex-col items-center justify-center gap-2 animate-fade-in"
+                className="w-24 h-24 rounded-2xl bg-white shadow-lg border border-surface-200 flex flex-col items-center justify-center gap-2 animate-fade-in"
                 style={{ animationDelay: `${i * 100 + 300}ms` }}
               >
-                <device.icon className="w-8 h-8 text-primary-400" />
-                <span className="text-xs text-surface-400">{device.label}</span>
+                <device.icon className="w-8 h-8 text-primary-600" />
+                <span className="text-xs text-surface-600">{device.label}</span>
               </div>
             ))}
           </div>
@@ -91,13 +91,13 @@ export function CustomerLanding() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-6 lg:px-12 bg-surface-900/50">
+      <section className="py-24 px-6 lg:px-12 bg-surface-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-display font-bold text-surface-900 mb-4">
               Why Choose EI Platform?
             </h2>
-            <p className="text-surface-400 max-w-xl mx-auto">
+            <p className="text-surface-600 max-w-xl mx-auto">
               We've reimagined electronics repair to be seamless, transparent, and reliable.
             </p>
           </div>
@@ -109,11 +109,11 @@ export function CustomerLanding() {
                 className="card-hover p-6 text-center animate-slide-up"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="w-14 h-14 rounded-xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-7 h-7 text-primary-400" />
+                <div className="w-14 h-14 rounded-xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                  <feature.icon className="w-7 h-7 text-primary-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-surface-400">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-surface-900 mb-2">{feature.title}</h3>
+                <p className="text-sm text-surface-600">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -123,11 +123,11 @@ export function CustomerLanding() {
       {/* CTA Section */}
       <section className="py-24 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="card p-12 bg-gradient-to-br from-primary-900/30 to-surface-800/50 border-primary-700/30">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-4">
+          <div className="card p-12 bg-gradient-to-br from-primary-50 to-white border-primary-200">
+            <h2 className="text-3xl lg:text-4xl font-display font-bold text-surface-900 mb-4">
               Ready to Get Started?
             </h2>
-            <p className="text-surface-300 mb-8 max-w-xl mx-auto">
+            <p className="text-surface-600 mb-8 max-w-xl mx-auto">
               Join thousands of satisfied customers who trust EI Platform for their electronics repair needs.
             </p>
             <Link to="/customer/dashboard" className="btn-primary btn-lg">
@@ -139,23 +139,19 @@ export function CustomerLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-surface-800">
+      <footer className="py-8 px-6 border-t border-surface-200 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Zap className="w-5 h-5 text-primary-500" />
-            <span className="text-surface-400 text-sm">EI Platform &copy; 2024</span>
+            <Zap className="w-5 h-5 text-primary-600" />
+            <span className="text-surface-600 text-sm">EI Platform &copy; 2024</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-surface-500">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Support</a>
+            <a href="#" className="hover:text-surface-900 transition-colors">Privacy</a>
+            <a href="#" className="hover:text-surface-900 transition-colors">Terms</a>
+            <a href="#" className="hover:text-surface-900 transition-colors">Support</a>
           </div>
         </div>
       </footer>
     </div>
   )
 }
-
-
-
-

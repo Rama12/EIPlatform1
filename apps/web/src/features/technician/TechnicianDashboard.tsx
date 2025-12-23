@@ -55,20 +55,20 @@ const nearbyJobs = [
 
 export function TechnicianDashboard() {
   return (
-    <div className="p-6 lg:p-10">
+    <div className="p-6 lg:p-10 bg-surface-100 min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">
+          <h1 className="text-3xl font-display font-bold text-surface-900 mb-1">
             Dashboard
           </h1>
-          <p className="text-surface-400">
+          <p className="text-surface-500">
             Monday, December 23, 2024
           </p>
         </div>
         <div className="flex items-center gap-3">
           <span className="badge-success px-3 py-1.5">
-            <span className="w-2 h-2 rounded-full bg-success-500 mr-2" />
+            <span className="w-2 h-2 rounded-full bg-success-600 mr-2" />
             Available
           </span>
         </div>
@@ -76,77 +76,77 @@ export function TechnicianDashboard() {
 
       {/* Stats */}
       <div className="grid sm:grid-cols-4 gap-4 mb-8">
-        <div className="stat-card bg-gradient-to-br from-emerald-900/30 to-surface-800/50 border-emerald-700/30">
+        <div className="stat-card bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200">
           <div className="flex items-center gap-3 mb-2">
-            <DollarSign className="w-5 h-5 text-emerald-400" />
-            <span className="text-surface-400 text-sm">Today's Earnings</span>
+            <DollarSign className="w-5 h-5 text-emerald-600" />
+            <span className="text-surface-600 text-sm">Today's Earnings</span>
           </div>
-          <p className="text-2xl font-display font-bold text-white">$285.00</p>
+          <p className="text-2xl font-display font-bold text-surface-900">$285.00</p>
         </div>
         <div className="stat-card">
           <div className="flex items-center gap-3 mb-2">
-            <CheckCircle2 className="w-5 h-5 text-success-500" />
-            <span className="text-surface-400 text-sm">Jobs Today</span>
+            <CheckCircle2 className="w-5 h-5 text-success-600" />
+            <span className="text-surface-500 text-sm">Jobs Today</span>
           </div>
-          <p className="text-2xl font-display font-bold text-white">4</p>
+          <p className="text-2xl font-display font-bold text-surface-900">4</p>
         </div>
         <div className="stat-card">
           <div className="flex items-center gap-3 mb-2">
             <Star className="w-5 h-5 text-yellow-500" />
-            <span className="text-surface-400 text-sm">Rating</span>
+            <span className="text-surface-500 text-sm">Rating</span>
           </div>
-          <p className="text-2xl font-display font-bold text-white">4.9</p>
+          <p className="text-2xl font-display font-bold text-surface-900">4.9</p>
         </div>
         <div className="stat-card">
           <div className="flex items-center gap-3 mb-2">
-            <Clock className="w-5 h-5 text-primary-400" />
-            <span className="text-surface-400 text-sm">Avg Time</span>
+            <Clock className="w-5 h-5 text-primary-600" />
+            <span className="text-surface-500 text-sm">Avg Time</span>
           </div>
-          <p className="text-2xl font-display font-bold text-white">47m</p>
+          <p className="text-2xl font-display font-bold text-surface-900">47m</p>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Active Job */}
         <section>
-          <h2 className="text-xl font-display font-semibold text-white mb-4">
+          <h2 className="text-xl font-display font-semibold text-surface-900 mb-4">
             Active Job
           </h2>
-          <div className="card p-6 bg-gradient-to-br from-primary-900/20 to-surface-800/50 border-primary-700/30">
+          <div className="card p-6 bg-gradient-to-br from-primary-50 to-white border-primary-200">
             <div className="flex items-center justify-between mb-4">
               <span className="badge-success">In Progress</span>
-              <span className="font-mono text-sm text-surface-500">{activeJob.id}</span>
+              <span className="font-mono text-sm text-surface-400">{activeJob.id}</span>
             </div>
             
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-surface-700 flex items-center justify-center">
-                <span className="text-lg font-medium text-white">JD</span>
+              <div className="w-12 h-12 rounded-full bg-surface-200 flex items-center justify-center">
+                <span className="text-lg font-medium text-surface-700">JD</span>
               </div>
               <div>
-                <h3 className="font-semibold text-white">{activeJob.customer}</h3>
-                <p className="text-sm text-surface-400">{activeJob.device}</p>
+                <h3 className="font-semibold text-surface-900">{activeJob.customer}</h3>
+                <p className="text-sm text-surface-500">{activeJob.device}</p>
               </div>
             </div>
 
-            <p className="text-surface-300 mb-4">{activeJob.issue}</p>
+            <p className="text-surface-700 mb-4">{activeJob.issue}</p>
 
-            <div className="flex items-start gap-2 text-sm text-surface-400 mb-6">
+            <div className="flex items-start gap-2 text-sm text-surface-500 mb-6">
               <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
               <span>{activeJob.address}</span>
             </div>
 
-            <div className="flex items-center justify-between p-3 rounded-lg bg-surface-800/50 mb-4">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-surface-200 mb-4">
               <div>
-                <p className="text-xs text-surface-500">Started</p>
-                <p className="font-medium text-white">{activeJob.startedAt}</p>
+                <p className="text-xs text-surface-400">Started</p>
+                <p className="font-medium text-surface-900">{activeJob.startedAt}</p>
               </div>
               <div className="text-center">
-                <p className="text-xs text-surface-500">Duration</p>
-                <p className="font-medium text-primary-400">32 min</p>
+                <p className="text-xs text-surface-400">Duration</p>
+                <p className="font-medium text-primary-600">32 min</p>
               </div>
               <div className="text-right">
-                <p className="text-xs text-surface-500">Est. Complete</p>
-                <p className="font-medium text-white">{activeJob.estimatedCompletion}</p>
+                <p className="text-xs text-surface-400">Est. Complete</p>
+                <p className="font-medium text-surface-900">{activeJob.estimatedCompletion}</p>
               </div>
             </div>
 
@@ -164,10 +164,10 @@ export function TechnicianDashboard() {
         {/* Nearby Jobs */}
         <section>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-display font-semibold text-white">
+            <h2 className="text-xl font-display font-semibold text-surface-900">
               Available Jobs Nearby
             </h2>
-            <span className="text-sm text-surface-500">3 available</span>
+            <span className="text-sm text-surface-400">3 available</span>
           </div>
           
           <div className="space-y-3">
@@ -177,26 +177,26 @@ export function TechnicianDashboard() {
                 to={`/technician/job/${job.id}`}
                 className="card-hover p-4 flex items-center gap-4 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-surface-700 flex items-center justify-center flex-shrink-0">
-                  <job.icon className="w-6 h-6 text-surface-400" />
+                <div className="w-12 h-12 rounded-xl bg-surface-100 flex items-center justify-center flex-shrink-0">
+                  <job.icon className="w-6 h-6 text-surface-500" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-medium text-white truncate">{job.device}</h3>
+                    <h3 className="font-medium text-surface-900 truncate">{job.device}</h3>
                     {job.urgency === 'urgent' && (
-                      <AlertCircle className="w-4 h-4 text-warning-500" />
+                      <AlertCircle className="w-4 h-4 text-warning-600" />
                     )}
                   </div>
-                  <p className="text-sm text-surface-400 truncate">{job.issue}</p>
+                  <p className="text-sm text-surface-500 truncate">{job.issue}</p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="font-semibold text-emerald-400">{job.payout}</p>
-                  <div className="flex items-center gap-1 text-sm text-surface-500">
+                  <p className="font-semibold text-emerald-600">{job.payout}</p>
+                  <div className="flex items-center gap-1 text-sm text-surface-400">
                     <MapPin className="w-3 h-3" />
                     {job.distance}
                   </div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-surface-500 group-hover:text-primary-400 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-5 h-5 text-surface-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
               </Link>
             ))}
           </div>
@@ -209,7 +209,7 @@ export function TechnicianDashboard() {
 
       {/* Recent Completions */}
       <section className="mt-8">
-        <h2 className="text-xl font-display font-semibold text-white mb-4">
+        <h2 className="text-xl font-display font-semibold text-surface-900 mb-4">
           Today's Completions
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -220,11 +220,11 @@ export function TechnicianDashboard() {
           ].map((job, i) => (
             <div key={i} className="card p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-medium text-white">{job.device}</span>
-                <span className="text-emerald-400 font-medium">{job.payout}</span>
+                <span className="font-medium text-surface-900">{job.device}</span>
+                <span className="text-emerald-600 font-medium">{job.payout}</span>
               </div>
-              <p className="text-sm text-surface-400">{job.issue}</p>
-              <p className="text-xs text-surface-500 mt-2">{job.time}</p>
+              <p className="text-sm text-surface-500">{job.issue}</p>
+              <p className="text-xs text-surface-400 mt-2">{job.time}</p>
             </div>
           ))}
         </div>
@@ -232,7 +232,3 @@ export function TechnicianDashboard() {
     </div>
   )
 }
-
-
-
-

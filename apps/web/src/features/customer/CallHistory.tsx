@@ -81,9 +81,9 @@ const deviceIcons = {
 }
 
 const statusConfig = {
-  completed: { label: 'Completed', icon: CheckCircle2, class: 'text-success-500' },
+  completed: { label: 'Completed', icon: CheckCircle2, class: 'text-success-600' },
   cancelled: { label: 'Cancelled', icon: XCircle, class: 'text-surface-400' },
-  pending: { label: 'Pending', icon: Clock, class: 'text-warning-500' },
+  pending: { label: 'Pending', icon: Clock, class: 'text-warning-600' },
 }
 
 export function CallHistory() {
@@ -98,14 +98,14 @@ export function CallHistory() {
   })
 
   return (
-    <div className="p-6 lg:p-10 max-w-7xl mx-auto">
+    <div className="p-6 lg:p-10 max-w-7xl mx-auto bg-surface-100 min-h-screen">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">
+          <h1 className="text-3xl font-display font-bold text-surface-900 mb-1">
             Call History
           </h1>
-          <p className="text-surface-400">
+          <p className="text-surface-500">
             View and manage your past repair calls.
           </p>
         </div>
@@ -118,7 +118,7 @@ export function CallHistory() {
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-500" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400" />
           <input 
             type="text" 
             className="input pl-11" 
@@ -128,8 +128,8 @@ export function CallHistory() {
           />
         </div>
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-surface-500" />
-          <div className="flex gap-1 bg-surface-800 rounded-lg p-1">
+          <Filter className="w-4 h-4 text-surface-400" />
+          <div className="flex gap-1 bg-white rounded-lg p-1 border border-surface-200">
             {['all', 'completed', 'cancelled'].map((f) => (
               <button
                 key={f}
@@ -137,7 +137,7 @@ export function CallHistory() {
                 className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
                   filter === f
                     ? 'bg-primary-600 text-white'
-                    : 'text-surface-400 hover:text-white'
+                    : 'text-surface-600 hover:text-surface-900'
                 }`}
               >
                 {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -157,21 +157,21 @@ export function CallHistory() {
             <div key={call.id} className="card-hover p-5">
               <div className="flex items-center gap-5">
                 {/* Device Icon */}
-                <div className="w-14 h-14 rounded-xl bg-surface-700 flex items-center justify-center flex-shrink-0">
-                  <DeviceIcon className="w-7 h-7 text-surface-300" />
+                <div className="w-14 h-14 rounded-xl bg-surface-100 flex items-center justify-center flex-shrink-0">
+                  <DeviceIcon className="w-7 h-7 text-surface-500" />
                 </div>
 
                 {/* Main Info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-1">
-                    <h3 className="font-semibold text-white">{call.device}</h3>
-                    <span className="font-mono text-xs text-surface-500">{call.id}</span>
+                    <h3 className="font-semibold text-surface-900">{call.device}</h3>
+                    <span className="font-mono text-xs text-surface-400">{call.id}</span>
                   </div>
-                  <p className="text-sm text-surface-400">{call.issue}</p>
+                  <p className="text-sm text-surface-500">{call.issue}</p>
                   <div className="flex items-center gap-4 mt-2 text-sm">
-                    <span className="text-surface-500">{call.completedAt}</span>
+                    <span className="text-surface-400">{call.completedAt}</span>
                     {call.technician !== '-' && (
-                      <span className="text-surface-400">by {call.technician}</span>
+                      <span className="text-surface-500">by {call.technician}</span>
                     )}
                   </div>
                 </div>
@@ -183,12 +183,12 @@ export function CallHistory() {
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className={`w-4 h-4 ${i < call.rating ? 'text-yellow-500 fill-yellow-500' : 'text-surface-600'}`} 
+                          className={`w-4 h-4 ${i < call.rating ? 'text-yellow-500 fill-yellow-500' : 'text-surface-300'}`} 
                         />
                       ))}
                     </div>
                   ) : (
-                    <span className="text-surface-500 text-sm">No rating</span>
+                    <span className="text-surface-400 text-sm">No rating</span>
                   )}
                 </div>
 
@@ -198,13 +198,13 @@ export function CallHistory() {
                     <status.icon className="w-4 h-4" />
                     <span className="text-sm font-medium">{status.label}</span>
                   </div>
-                  <span className="text-lg font-semibold text-white">{call.cost}</span>
+                  <span className="text-lg font-semibold text-surface-900">{call.cost}</span>
                 </div>
 
                 {/* Arrow */}
                 <Link 
                   to={`/customer/track/${call.id}`}
-                  className="p-2 text-surface-500 hover:text-primary-400 transition-colors"
+                  className="p-2 text-surface-400 hover:text-primary-600 transition-colors"
                 >
                   <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -217,14 +217,14 @@ export function CallHistory() {
       {/* Empty State */}
       {filteredCalls.length === 0 && (
         <div className="text-center py-16">
-          <Search className="w-12 h-12 text-surface-600 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-white mb-2">No calls found</h3>
-          <p className="text-surface-400">Try adjusting your search or filter criteria.</p>
+          <Search className="w-12 h-12 text-surface-300 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold text-surface-900 mb-2">No calls found</h3>
+          <p className="text-surface-500">Try adjusting your search or filter criteria.</p>
         </div>
       )}
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-8 pt-6 border-t border-surface-700/50">
+      <div className="flex items-center justify-between mt-8 pt-6 border-t border-surface-200">
         <p className="text-sm text-surface-500">
           Showing {filteredCalls.length} of {calls.length} calls
         </p>
@@ -236,7 +236,3 @@ export function CallHistory() {
     </div>
   )
 }
-
-
-
-
