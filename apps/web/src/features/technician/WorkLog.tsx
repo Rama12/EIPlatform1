@@ -7,7 +7,6 @@ import {
   Camera,
   FileText,
   Package,
-  DollarSign,
   Send,
   Plus,
   X
@@ -202,6 +201,7 @@ export function WorkLog() {
     </div>
   )
 }
+
 
 
 

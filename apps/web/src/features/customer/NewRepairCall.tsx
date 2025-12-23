@@ -12,8 +12,7 @@ import {
   Upload,
   MapPin,
   Clock,
-  CheckCircle2,
-  X
+  CheckCircle2
 } from 'lucide-react'
 
 const deviceTypes = [
@@ -315,6 +314,7 @@ export function NewRepairCall() {
     </div>
   )
 }
+
 
 
 
