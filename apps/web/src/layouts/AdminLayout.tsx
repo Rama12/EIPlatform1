@@ -28,7 +28,7 @@ export function AdminLayout() {
       {/* Sidebar */}
       <aside className={`hidden lg:flex flex-col ${collapsed ? 'w-20' : 'w-64'} bg-white border-r border-surface-200 transition-all duration-300`}>
         {/* Logo */}
-        <div className="h-16 flex items-center gap-3 px-6 border-b border-surface-200">
+        <Link to="/" className="h-16 flex items-center gap-3 px-6 border-b border-surface-200 hover:bg-surface-50 transition-colors">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-md">
             <Zap className="w-5 h-5 text-white" />
           </div>
@@ -38,7 +38,7 @@ export function AdminLayout() {
               <span className="text-xs text-surface-500">Admin Panel</span>
             </div>
           )}
-        </div>
+        </Link>
 
         {/* Navigation */}
         <nav className="flex-1 px-3 py-6 space-y-1">

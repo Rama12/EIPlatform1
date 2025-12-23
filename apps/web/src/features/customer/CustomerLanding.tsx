@@ -37,12 +37,12 @@ export function CustomerLanding() {
         
         {/* Navigation */}
         <header className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-6">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
               <Zap className="w-6 h-6 text-white" />
             </div>
             <span className="font-display font-bold text-2xl text-surface-900">EI Platform</span>
-          </div>
+          </Link>
           <div className="flex items-center gap-4">
             <Link to="/customer/dashboard" className="btn-ghost">Sign In</Link>
             <Link to="/customer/dashboard" className="btn-primary">Get Started</Link>
