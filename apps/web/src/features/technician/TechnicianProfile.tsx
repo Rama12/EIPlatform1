@@ -1,5 +1,4 @@
 import { 
-  User, 
   Star, 
   Award, 
   MapPin, 
@@ -227,6 +226,7 @@ export function TechnicianProfile() {
     </div>
   )
 }
+
 
 
 

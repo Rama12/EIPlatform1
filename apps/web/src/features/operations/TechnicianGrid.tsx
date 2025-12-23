@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { 
   Search, 
-  Filter, 
   MapPin, 
   Star,
   Phone,
@@ -109,7 +108,6 @@ const statusConfig = {
 
 export function TechnicianGrid() {
   const [filter, setFilter] = useState('all')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   const filteredTechs = technicians.filter(tech => 
     filter === 'all' || tech.status === filter
@@ -272,6 +270,7 @@ export function TechnicianGrid() {
     </div>
   )
 }
+
 
 
 

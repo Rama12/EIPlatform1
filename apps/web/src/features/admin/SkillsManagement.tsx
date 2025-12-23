@@ -10,8 +10,6 @@ import {
   Headphones,
   Camera,
   Gamepad2,
-  Watch,
-  Tablet,
   ChevronRight,
   Users
 } from 'lucide-react'
@@ -249,6 +247,7 @@ export function SkillsManagement() {
     </div>
   )
 }
+
 
 
 
