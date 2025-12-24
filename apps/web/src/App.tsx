@@ -36,16 +36,21 @@ import { SystemConfig } from './features/admin/SystemConfig'
 // Portal Selector
 import { PortalSelector } from './features/PortalSelector'
 
+// Auth
+import { Login } from './features/Login'
+
 function App() {
   return (
     <div className="min-h-screen bg-surface-100">
       <Routes>
-        {/* Portal Selector */}
-        <Route path="/" element={<PortalSelector />} />
+        {/* Public Routes */}
+        <Route path="/" element={<CustomerLanding />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/portal-selector" element={<PortalSelector />} />
         
         {/* Customer Portal */}
         <Route path="/customer" element={<CustomerLayout />}>
-          <Route index element={<CustomerLanding />} />
+          <Route index element={<Navigate to="/customer/dashboard" replace />} />
           <Route path="dashboard" element={<CustomerDashboard />} />
           <Route path="new-call" element={<NewRepairCall />} />
           <Route path="track/:callId" element={<CallTracking />} />

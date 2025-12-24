@@ -3,10 +3,10 @@ import {
   LayoutDashboard, 
   Calendar, 
   User,
-  LogOut,
   DollarSign
 } from 'lucide-react'
 import brandname from '../assets/brandname.jpg'
+import { LogoutButton } from '../components/LogoutButton'
 
 const navItems = [
   { path: '/technician/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -66,9 +66,7 @@ export function TechnicianLayout() {
               <p className="text-sm font-medium text-surface-900 truncate">Mike Johnson</p>
               <p className="text-xs text-surface-500">Expert Technician</p>
             </div>
-            <button className="p-2 text-surface-400 hover:text-surface-700 transition-colors">
-              <LogOut className="w-5 h-5" />
-            </button>
+            <LogoutButton />
           </div>
         </div>
       </aside>

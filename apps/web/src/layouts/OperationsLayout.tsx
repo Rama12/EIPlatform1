@@ -4,11 +4,11 @@ import {
   ListTodo,
   Users,
   AlertTriangle,
-  LogOut,
   Bell,
   Search
 } from 'lucide-react'
 import brandname from '../assets/brandname.jpg'
+import { LogoutButton } from '../components/LogoutButton'
 
 const navItems = [
   { path: '/operations/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -83,9 +83,7 @@ export function OperationsLayout() {
               <p className="text-sm font-medium text-surface-900 truncate">Sarah Chen</p>
               <p className="text-xs text-surface-500">Operations Manager</p>
             </div>
-            <button className="p-2 text-surface-400 hover:text-surface-700 transition-colors">
-              <LogOut className="w-5 h-5" />
-            </button>
+            <LogoutButton />
           </div>
         </div>
       </aside>

@@ -4,12 +4,12 @@ import {
   Plus, 
   Clock, 
   User,
-  LogOut,
   Menu,
   X
 } from 'lucide-react'
 import { useState } from 'react'
 import brandname from '../assets/brandname.jpg'
+import { LogoutButton } from '../components/LogoutButton'
 
 const navItems = [
   { path: '/customer/dashboard', label: 'Dashboard', icon: Home },
@@ -94,10 +94,7 @@ export function CustomerLayout() {
                   {item.label}
                 </Link>
               ))}
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-surface-600 hover:bg-surface-100 hover:text-surface-900 transition-all">
-                <LogOut className="w-5 h-5" />
-                Sign Out
-              </button>
+              <LogoutButton variant="full" className="w-full" />
             </nav>
           </div>
         )}

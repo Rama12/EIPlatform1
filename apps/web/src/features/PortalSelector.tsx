@@ -6,8 +6,8 @@ import {
   Shield,
   ChevronRight
 } from 'lucide-react'
-import logo from '../assets/logo.jpg'
 import brandname from '../assets/brandname.jpg'
+import { LogoutButton } from '../components/LogoutButton'
 
 const portals = [
   {
@@ -54,12 +54,14 @@ export function PortalSelector() {
 
       {/* Content */}
       <div className="relative flex-1 flex flex-col items-center justify-center px-6 py-16">
+        {/* Logout Button */}
+        <div className="absolute top-6 right-6">
+          <LogoutButton />
+        </div>
+
         {/* Logo & Title */}
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-24 h-24 mb-6 rounded-2xl bg-white shadow-lg shadow-primary-500/10 overflow-hidden">
-            <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-          </div>
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-2">
             <img src={brandname} alt="AIthertech" className="h-16 w-auto object-contain" />
           </div>
           <p className="text-xl text-surface-500 max-w-md">

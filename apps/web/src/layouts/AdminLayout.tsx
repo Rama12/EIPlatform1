@@ -5,11 +5,11 @@ import {
   ShieldCheck,
   Tag,
   Settings,
-  LogOut,
   ChevronDown
 } from 'lucide-react'
 import { useState } from 'react'
 import brandname from '../assets/brandname.jpg'
+import { LogoutButton } from '../components/LogoutButton'
 
 const navItems = [
   { path: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -76,9 +76,7 @@ export function AdminLayout() {
                   <p className="text-sm font-medium text-surface-900 truncate">Admin User</p>
                   <p className="text-xs text-surface-500">Super Admin</p>
                 </div>
-                <button className="p-2 text-surface-400 hover:text-surface-700 transition-colors">
-                  <LogOut className="w-5 h-5" />
-                </button>
+                <LogoutButton />
               </>
             )}
           </div>

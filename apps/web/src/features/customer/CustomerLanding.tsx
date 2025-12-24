@@ -41,8 +41,8 @@ export function CustomerLanding() {
             <img src={brandname} alt="AIthertech" className="h-8 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-4">
-            <Link to="/customer/dashboard" className="btn-ghost">Sign In</Link>
-            <Link to="/customer/dashboard" className="btn-primary">Get Started</Link>
+            <Link to="/login" className="btn-ghost">Sign In</Link>
+            <Link to="/login" className="btn-primary">Get Started</Link>
           </div>
         </header>
 
@@ -127,7 +127,7 @@ export function CustomerLanding() {
             <p className="text-surface-600 mb-8 max-w-xl mx-auto">
               Join thousands of satisfied customers who trust Aithertech for their electronics repair needs.
             </p>
-            <Link to="/customer/dashboard" className="btn-primary btn-lg">
+            <Link to="/login" className="btn-primary btn-lg">
               Create Your Account
               <ArrowRight className="w-5 h-5" />
             </Link>

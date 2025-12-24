@@ -2,6 +2,7 @@
   "name": "ei-platform",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@10.0.0",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -10,7 +11,9 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "predeploy": "npm run build",
+    "deploy": "cd apps/web && npm run deploy"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
