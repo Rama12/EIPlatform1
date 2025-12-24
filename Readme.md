@@ -1,86 +1,52 @@
----
-name: Electronics Repair Platform
-overview: Build a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow. The MVP delivers core call logging, auto-allocation with override, and real-time tracking in 4-6 weeks using React, Node.js, TypeScript, and PostgreSQL as a PWA.
-todos:
-  - id: mockups
-    content: Create UI mockups for all user portals (Customer, Technician, Operations, Admin)
-    status: completed
-  - id: project-setup
-    content: Initialize monorepo with Turborepo, configure TypeScript, ESLint, Docker
-    status: pending
-    dependencies:
-      - mockups
-  - id: db-schema
-    content: Design and implement PostgreSQL schema with PostGIS extension
-    status: pending
-    dependencies:
-      - project-setup
-  - id: auth-system
-    content: Implement JWT authentication with role-based access control
-    status: pending
-    dependencies:
-      - db-schema
-  - id: call-management
-    content: Build call CRUD API and customer portal call logging flow
-    status: pending
-    dependencies:
-      - auth-system
-  - id: technician-module
-    content: Implement technician registration, skills, and availability management
-    status: pending
-    dependencies:
-      - auth-system
-  - id: allocation-engine
-    content: Build auto-allocation algorithm with operations override capability
-    status: pending
-    dependencies:
-      - call-management
-      - technician-module
-  - id: realtime-updates
-    content: Implement WebSocket layer for live status updates
-    status: pending
-    dependencies:
-      - allocation-engine
-  - id: operations-dashboard
-    content: Build operations management dashboard with call queue and assignment UI
-    status: pending
-    dependencies:
-      - realtime-updates
-  - id: rating-system
-    content: Implement post-completion rating and feedback flow
-    status: pending
-    dependencies:
-      - call-management
-  - id: inventory-system
-    content: Build spare parts inventory with warehouses, stock management, and low-stock alerts
-    status: pending
-    dependencies:
-      - db-schema
-      - operations-dashboard
-  - id: tech-parts-usage
-    content: Implement technician parts pickup and usage logging on repair calls
-    status: pending
-    dependencies:
-      - inventory-system
-      - call-management
-  - id: pwa-setup
-    content: Configure service workers, offline support, and installability
-    status: pending
-    dependencies:
-      - call-management
-  - id: testing-qa
-    content: Write unit, integration, and E2E tests for critical paths
-    status: pending
-  - id: deployment
-    content: Set up AWS infrastructure and CI/CD pipeline
-    status: pending
-    dependencies:
-      - project-setup
----
+# 🔧 Electronics Repair Platform (EIPlatform)
 
-#Electronics Repair Platform (EIPlatform)
+> A scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow.
 
-## System Architecture Overview
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [System Architecture](#system-architecture-overview)
+- [Tech Stack](#tech-stack)
+- [Project Status](#project-status)
+- [Getting Started](#getting-started)
+- [Development Roadmap](#development-roadmap)
+  - [Phase 1: MVP (Weeks 1-6)](#phase-1-mvp-weeks-1-6---core-platform)
+  - [Phase 2: Enhanced Features (Weeks 7-10)](#phase-2-enhanced-features-weeks-7-10)
+  - [Phase 3: Scale and Optimize (Weeks 11-14)](#phase-3-scale-and-optimize-weeks-11-14)
+- [Database Schema](#database-schema-design)
+- [API Documentation](#api-documentation)
+- [Quality Assurance](#quality-assurance-strategy)
+- [Deployment](#deployment-architecture)
+
+## 🎯 Overview
+
+Build a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow. The MVP delivers core call logging, auto-allocation with override, and real-time tracking in 4-6 weeks using React, Node.js, TypeScript, and PostgreSQL as a PWA.
+
+## ✨ Features
+
+### Core Features (MVP)
+- 🔐 **JWT Authentication** with role-based access control
+- 📞 **Call Management** - Create, track, and manage repair calls
+- 👨‍🔧 **Technician Management** - Registration, skills, and availability
+- 🤖 **Auto-Allocation Engine** - Intelligent technician assignment with operations override
+- 📍 **Real-time Tracking** - Live status updates via WebSocket
+- 🏪 **Multi-Warehouse Inventory** - Spare parts management across multiple locations
+- 📊 **Operations Dashboard** - Call queue, technician grid, and manual assignment
+- ⭐ **Rating System** - Post-completion feedback and ratings
+
+### Enhanced Features (Phase 2+)
+- 📱 **GPS Tracking** - Real-time technician location updates
+- 💬 **In-App Chat** - Customer-technician messaging
+- 🔔 **Push Notifications** - Web Push API integration
+- 📈 **Advanced Analytics** - Performance metrics and reporting
+
+## 🏗️ System Architecture Overview
 
 ```mermaid
 flowchart TB
@@ -127,14 +93,124 @@ flowchart TB
     realtime --> clients
 ```
 
----
+## 🛠️ Tech Stack
 
-## Phase 1: MVP (Weeks 1-6) - Core Platform
+### Frontend
+- **React 18** with TypeScript
+- **Vite** for build tooling
+- **TanStack Query** for server state
+- **Zustand** for client state
+- **Socket.io-client** for real-time
+- **Workbox** for PWA/offline support
+- **Tailwind CSS** with custom design system
+- **React Router** for navigation
+- **React Hook Form + Zod** for forms
 
-### 1.1 UI/UX Mockups and Design System (Week 1)
+### Backend
+- **Node.js** with NestJS framework (TypeScript)
+- **PostgreSQL** with PostGIS extension (geospatial queries)
+- **Redis** for caching and session management
+- **Socket.io** for real-time WebSocket connections
+- **Bull** for job queues (notifications, allocation)
+- **JWT** with refresh tokens for authentication
 
-Create interactive mockups for all user portals before development begins:**Customer/Retailer/OEM Portal Screens:**
+### Infrastructure
+- **AWS ECS Fargate** for containerized compute
+- **RDS PostgreSQL** with PostGIS
+- **ElastiCache Redis**
+- **S3** for object storage
+- **CloudFront CDN** for static assets
 
+## 📊 Project Status
+
+| Task | Status | Dependencies |
+|------|--------|--------------|
+| UI Mockups | ✅ Completed | - |
+| Project Setup | ⏳ Pending | mockups |
+| Database Schema | ⏳ Pending | project-setup |
+| Auth System | ⏳ Pending | db-schema |
+| Call Management | ⏳ Pending | auth-system |
+| Technician Module | ⏳ Pending | auth-system |
+| Allocation Engine | ⏳ Pending | call-management, technician-module |
+| Real-time Updates | ⏳ Pending | allocation-engine |
+| Operations Dashboard | ⏳ Pending | realtime-updates |
+| Rating System | ⏳ Pending | call-management |
+| Inventory System | ⏳ Pending | db-schema, operations-dashboard |
+| Tech Parts Usage | ⏳ Pending | inventory-system, call-management |
+| PWA Setup | ⏳ Pending | call-management |
+| Testing & QA | ⏳ Pending | - |
+| Deployment | ⏳ Pending | project-setup |
+
+**Legend:** ✅ Completed | ⏳ Pending | 🚧 In Progress
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm/yarn
+- PostgreSQL 14+ with PostGIS extension
+- Redis 6+
+- Docker (optional, for containerized development)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/EIPlatform.git
+cd EIPlatform
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# Start PostgreSQL and Redis (using Docker)
+docker-compose up -d
+
+# Run database migrations
+npm run db:migrate
+
+# Start development servers
+npm run dev
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/eiplatform
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_DB=eiplatform
+
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+# JWT
+JWT_SECRET=your-secret-key
+JWT_REFRESH_SECRET=your-refresh-secret-key
+
+# AWS (for production)
+AWS_REGION=us-east-1
+AWS_S3_BUCKET=your-bucket-name
+```
+
+## 📅 Development Roadmap
+
+### Phase 1: MVP (Weeks 1-6) - Core Platform
+
+#### 1.1 UI/UX Mockups and Design System (Week 1)
+
+Create interactive mockups for all user portals before development begins.
+
+**Customer/Retailer/OEM Portal Screens:**
 - Landing page with login/register
 - Dashboard (active calls, recent history, quick actions)
 - New repair call form (device type, issue description, photos, location)
@@ -143,7 +219,6 @@ Create interactive mockups for all user portals before development begins:**Cust
 - Call history with filtering
 
 **Technician Portal Screens:**
-
 - Dashboard (available jobs nearby, active job, earnings summary)
 - Job detail view (customer info, device details, navigation)
 - Work log entry (status updates, notes, parts used, photos)
@@ -155,7 +230,6 @@ Create interactive mockups for all user portals before development begins:**Cust
 - Parts usage log (record parts used per repair call with quantity)
 
 **Operations Dashboard Screens:**
-
 - Real-time call queue with map view
 - Technician availability grid
 - Manual assignment interface (drag-and-drop or modal)
@@ -168,13 +242,12 @@ Create interactive mockups for all user portals before development begins:**Cust
 - Low stock alerts dashboard with configurable thresholds
 
 **Admin Panel Screens:**
-
 - User management (CRUD for all user types)
 - Technician verification/approval workflow
 - Skills and device categories management
 - System configuration
 
-### 1.2 Database Schema Design
+#### 1.2 Database Schema Design
 
 ```mermaid
 erDiagram
@@ -297,64 +370,29 @@ erDiagram
     }
 ```
 
-
-
-### 1.3 Backend Architecture
-
-**Tech Stack:**
-
-- Node.js with NestJS framework (TypeScript)
-- PostgreSQL with PostGIS extension (geospatial queries)
-- Redis for caching and session management
-- Socket.io for real-time WebSocket connections
-- Bull for job queues (notifications, allocation)
-- JWT with refresh tokens for authentication
+#### 1.3 Backend Architecture
 
 **Core API Modules:**
 
 | Module | Endpoints | Description |
-
-|-------------|------------------|-------------------|
-
+|--------|-----------|-------------|
 | Auth | `/auth/*` | Register, login, refresh, password reset |
-
 | Users | `/users/*` | Profile management, preferences |
-
 | Calls | `/calls/*` | CRUD, status updates, assignment |
-
 | Technicians | `/technicians/*` | Availability, skills, location updates |
-
 | Allocation | `/allocation/*` | Auto-assign, manual override, queue |
-
 | Ratings | `/ratings/*` | Submit and view ratings |
-
 | Warehouses | `/warehouses/*` | CRUD, location search by zip code |
-
 | Parts | `/parts/*` | Spare parts catalog CRUD |
-
 | Inventory | `/inventory/*` | Stock levels, adjustments, low-stock alerts |
-
 | Pickups | `/pickups/*` | Technician part pickups from warehouses |
-
 | PartUsage | `/calls/:id/parts/*` | Log parts used on repair calls |
 
-### 1.4 Frontend Architecture
-
-**Tech Stack:**
-
-- React 18 with TypeScript
-- Vite for build tooling
-- TanStack Query for server state
-- Zustand for client state
-- Socket.io-client for real-time
-- Workbox for PWA/offline support
-- Tailwind CSS with a custom design system
-- React Router for navigation
-- React Hook Form + Zod for forms
+#### 1.4 Frontend Architecture
 
 **Project Structure:**
 
-```javascript
+```
 src/
   components/       # Shared UI components
   features/         # Feature-based modules
@@ -370,9 +408,7 @@ src/
   utils/            # Helpers
 ```
 
-
-
-### 1.5 Allocation Engine Logic
+#### 1.5 Allocation Engine Logic
 
 ```mermaid
 flowchart TD
@@ -406,16 +442,14 @@ flowchart TD
     FindNext --> ScoreTechs
 ```
 
-
-
-### 1.6 Spare Parts Inventory System
+#### 1.6 Spare Parts Inventory System
 
 **Multi-Warehouse Architecture:**
-
 - Multiple warehouses per zip code for geographic coverage
 - Each warehouse maintains independent stock levels
 - Technicians pick up parts from nearest warehouse before jobs
 - Parts usage logged against each repair call for cost tracking
+
 ```mermaid
 flowchart TD
     subgraph ops [Operations Management]
@@ -456,46 +490,39 @@ flowchart TD
     CostCalc --> |Job Cost Report| RepairCall[(repair_calls)]
 ```
 
-
 **Stock Alert System:**
-
 - Configurable low-stock threshold per part
 - Background job checks inventory levels hourly
 - Operations dashboard shows alert badge count
 - Alerts auto-resolve when stock is replenished
 
 **Parts Cost Tracking:**
-
 - Cost price stored at time of usage (snapshot)
 - Total parts cost calculated per repair call
 - Reports available for cost analysis by technician, warehouse, and time period
 
 ---
 
-## Phase 2: Enhanced Features (Weeks 7-10)
+### Phase 2: Enhanced Features (Weeks 7-10)
 
-### 2.1 GPS Tracking System
-
+#### 2.1 GPS Tracking System
 - Real-time technician location updates (throttled to every 30 seconds)
 - Customer-facing ETA and map view
 - Geofencing for arrival detection
 
-### 2.2 In-App Chat
-
+#### 2.2 In-App Chat
 - WebSocket-based messaging between customer and technician
 - Message persistence in PostgreSQL
 - File/image sharing capability
 - Read receipts
 
-### 2.3 Push Notifications
-
+#### 2.3 Push Notifications
 - Web Push API integration
 - Service worker for background notifications
 - Notification preferences per user
 - Critical vs. informational notification types
 
-### 2.4 Live Operations Dashboard
-
+#### 2.4 Live Operations Dashboard
 - Real-time metrics (calls in queue, avg response time, active technicians)
 - Geographic heat map of demand
 - Drag-and-drop call reassignment
@@ -503,24 +530,21 @@ flowchart TD
 
 ---
 
-## Phase 3: Scale and Optimize (Weeks 11-14)
+### Phase 3: Scale and Optimize (Weeks 11-14)
 
-### 3.1 Advanced Analytics
-
+#### 3.1 Advanced Analytics
 - Call volume trends and forecasting
 - Technician performance scorecards
 - Customer satisfaction metrics
 - Revenue analytics (preparation for payment phase)
 
-### 3.2 Enhanced Marketplace Features
-
+#### 3.2 Enhanced Marketplace Features
 - Technician certification badges
 - Skill verification process
 - Customer reviews with photos
 - Technician earnings dashboard
 
-### 3.3 Performance Optimization
-
+#### 3.3 Performance Optimization
 - Database query optimization
 - CDN for static assets
 - API response caching
@@ -528,20 +552,15 @@ flowchart TD
 
 ---
 
-## Quality Assurance Strategy
+## 🧪 Quality Assurance Strategy
 
 ### Testing Pyramid
 
 | Level | Tools | Coverage Target |
-
 |-------|-------|-----------------|
-
 | Unit Tests | Jest, React Testing Library | 80% for business logic |
-
 | Integration Tests | Supertest, TestContainers | API endpoints, DB operations |
-
 | E2E Tests | Playwright | Critical user journeys |
-
 | Performance | k6, Lighthouse | API latency, PWA scores |
 
 ### QA Process
@@ -553,7 +572,7 @@ flowchart TD
 
 ---
 
-## Deployment Architecture
+## 🚀 Deployment Architecture
 
 ```mermaid
 flowchart TB
@@ -591,7 +610,6 @@ flowchart TB
 ```
 
 **Recommended AWS Services:**
-
 - **Compute**: ECS Fargate (auto-scaling containers)
 - **Database**: RDS PostgreSQL with PostGIS
 - **Cache**: ElastiCache Redis
