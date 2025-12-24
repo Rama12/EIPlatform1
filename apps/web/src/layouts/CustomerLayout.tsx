@@ -34,7 +34,7 @@ export function CustomerLayout() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <img src={brandname} alt="AIthertech" className="h-8 w-auto object-contain" />
+              <img src={brandname} alt="Aithertech" className="h-14 w-auto object-contain" />
             </Link>
 
             {/* Desktop Navigation */}

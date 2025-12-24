@@ -6,6 +6,7 @@ import {
   Shield,
   ChevronRight
 } from 'lucide-react'
+import logo from '../assets/logo.jpg'
 import { LogoutButton } from '../components/LogoutButton'
 
 const portals = [
@@ -53,11 +54,16 @@ export function PortalSelector() {
 
       {/* Content */}
       <div className="relative flex-1 flex flex-col items-center justify-center px-6 py-8">
-        {/* Header with Title and Logout */}
-        <div className="w-full max-w-4xl flex items-center justify-between mb-8 animate-fade-in">
-          <p className="text-xl text-surface-500">
-            Electronics Repair Management System
-          </p>
+        {/* Header with Logo, Title and Logout */}
+        <div className="w-full max-w-4xl hidden md:flex items-center justify-between mb-8 animate-fade-in">
+          <div className="flex items-center gap-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-lg shadow-primary-500/10 overflow-hidden flex-shrink-0">
+              <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+            </div>
+            <p className="text-xl text-surface-500">
+              Electronics Repair Management System
+            </p>
+          </div>
           <LogoutButton />
         </div>
 
@@ -103,7 +109,7 @@ export function PortalSelector() {
 
       {/* Footer */}
       <footer className="relative text-center py-6 text-surface-500 text-sm">
-        <p>BrandName &copy; 2024. All rights reserved.</p>
+        <p>Aithertech &copy; 2026. All rights reserved.</p>
       </footer>
     </div>
   )

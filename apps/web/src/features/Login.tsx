@@ -82,7 +82,7 @@ export function Login() {
             <img src={logo} alt="Logo" className="w-full h-full object-cover" />
           </div>
           <div className="flex justify-center mb-4">
-            <img src={brandname} alt="AIthertech" className="h-16 w-auto object-contain" />
+            <img src={brandname} alt="Aithertech" className="h-28 w-auto object-contain" />
           </div>
           <p className="text-xl text-surface-500">
             Electronics Repair Management System
@@ -125,34 +125,6 @@ export function Login() {
                 Sign In
               </button>
             </form>
-
-            {/* Quick Reference */}
-            <div className="mt-8 pt-8 border-t border-surface-200">
-              <p className="text-xs text-surface-500 text-center mb-4 font-medium">
-                Demo Login IDs:
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {userTypes.map((type) => (
-                  <button
-                    key={type.id}
-                    onClick={() => setLoginId(type.id)}
-                    className="flex items-center gap-2 p-3 rounded-lg border border-surface-200 hover:border-primary-300 hover:bg-primary-50 transition-colors text-left group"
-                  >
-                    <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${type.color} flex items-center justify-center`}>
-                      <type.icon className="w-4 h-4 text-white" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-medium text-surface-900 group-hover:text-primary-700">
-                        {type.name}
-                      </p>
-                      <p className="text-xs text-surface-500 font-mono">
-                        {type.id}
-                      </p>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
@@ -166,7 +138,7 @@ export function Login() {
 
       {/* Footer */}
       <footer className="relative text-center py-6 text-surface-500 text-sm">
-        <p>Aithertech &copy; 2024. All rights reserved.</p>
+        <p>Aithertech &copy; 2026. All rights reserved.</p>
       </footer>
     </div>
   )

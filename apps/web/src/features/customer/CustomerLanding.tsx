@@ -38,16 +38,15 @@ export function CustomerLanding() {
         {/* Navigation */}
         <header className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-6">
           <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src={brandname} alt="AIthertech" className="h-8 w-auto object-contain" />
+            <img src={brandname} alt="Aithertech" className="h-14 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-4">
-            <Link to="/login" className="btn-ghost">Sign In</Link>
-            <Link to="/login" className="btn-primary">Get Started</Link>
+            <Link to="/login" className="btn-primary">Sign In</Link>
           </div>
         </header>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-10">
           <div className="max-w-3xl">
             <div className="badge-primary mb-6 animate-fade-in">
               Trusted by 10,000+ customers
@@ -60,15 +59,7 @@ export function CustomerLanding() {
               Connect with certified technicians for fast, reliable repairs. 
               From smartphones to smart TVs — we fix it all at your doorstep.
             </p>
-            <div className="flex flex-wrap items-center gap-4 animate-slide-up" style={{ animationDelay: '200ms' }}>
-              <Link to="/customer/new-call" className="btn-primary btn-lg group">
-                Request Repair
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/customer/history" className="btn-secondary btn-lg">
-                Track Existing Call
-              </Link>
-            </div>
+
           </div>
 
           {/* Device Icons */}
@@ -139,7 +130,7 @@ export function CustomerLanding() {
       <footer className="py-8 px-6 border-t border-surface-200 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-surface-600 text-sm">Aithertech &copy; 2024</span>
+            <span className="text-surface-600 text-sm">Aithertech &copy; 2026</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-surface-500">
             <a href="#" className="hover:text-surface-900 transition-colors">Privacy</a>

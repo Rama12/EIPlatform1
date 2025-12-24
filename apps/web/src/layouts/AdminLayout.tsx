@@ -31,7 +31,7 @@ export function AdminLayout() {
         <Link to="/" className="h-16 flex items-center gap-3 px-6 border-b border-surface-200 hover:bg-surface-50 transition-colors">
           {!collapsed && (
             <div className="flex flex-col">
-              <img src={brandname} alt="Brand Name" className="h-5 w-auto object-contain" />
+              <img src={brandname} alt="Brand Name" className="h-10 w-auto object-contain" />
               <span className="text-xs text-surface-500">Admin Panel</span>
             </div>
           )}
@@ -86,7 +86,7 @@ export function AdminLayout() {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-surface-200 shadow-sm flex items-center justify-between px-4">
         <Link to="/" className="flex items-center">
-          <img src={brandname} alt="AIthertech" className="h-5 w-auto object-contain" />
+          <img src={brandname} alt="Aithertech" className="h-10 w-auto object-contain" />
         </Link>
         <div className="flex items-center gap-2">
           {navItems.slice(0, 4).map((item) => (

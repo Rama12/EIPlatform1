@@ -27,7 +27,7 @@ export function OperationsLayout() {
         {/* Logo */}
         <Link to="/" className="h-16 flex items-center gap-3 px-6 border-b border-surface-200 hover:bg-surface-50 transition-colors">
           <div>
-            <img src={brandname} alt="AIthertech" className="h-5 w-auto object-contain" />
+            <img src={brandname} alt="Aithertech" className="h-10 w-auto object-contain" />
             <span className="text-xs text-surface-500">Operations Center</span>
           </div>
         </Link>
