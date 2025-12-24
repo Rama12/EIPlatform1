@@ -116,7 +116,7 @@ export function CustomerLanding() {
               Ready to Get Started?
             </h2>
             <p className="text-surface-600 mb-8 max-w-xl mx-auto">
-              Join thousands of satisfied customers who trust Aithertech for their electronics repair needs.
+              Join thousands of satisfied customers, dealers and OEMs who trust Aithertech for their electronics repair needs.
             </p>
             <Link to="/login" className="btn-primary btn-lg">
               Create Your Account
