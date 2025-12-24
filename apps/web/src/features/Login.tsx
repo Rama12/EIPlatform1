@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { 
   User, 
   Wrench, 
@@ -130,9 +130,9 @@ export function Login() {
 
         {/* Back to Home */}
         <div className="mt-8 text-center animate-fade-in" style={{ animationDelay: '200ms' }}>
-          <a href="/" className="text-sm text-surface-500 hover:text-primary-600 transition-colors">
+          <Link to="/" className="text-sm text-surface-500 hover:text-primary-600 transition-colors">
             ← Back to Home
-          </a>
+          </Link>
         </div>
       </div>
 
