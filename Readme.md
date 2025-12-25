@@ -108,12 +108,10 @@ flowchart TB
         OpsApp[Operations Dashboard]
         AdminApp[Admin Panel]
     end
-
     subgraph api_gateway [API Layer]
         Gateway[API Gateway / Load Balancer]
         AuthService[Auth Service]
     end
-
     subgraph services [Backend Services]
         CallService[Call Management Service]
         AllocationService[Allocation Engine]
@@ -123,18 +121,15 @@ flowchart TB
         ChatService[Chat Service]
         GeoService[Geolocation Service]
     end
-
     subgraph data [Data Layer]
         PostgreSQL[(PostgreSQL)]
         Redis[(Redis Cache)]
         S3[Object Storage]
     end
-
     subgraph realtime [Real-time Layer]
         WebSocket[WebSocket Server]
         PushService[Push Notification Service]
     end
-
     clients --> Gateway
     Gateway --> AuthService
     Gateway --> services
@@ -310,7 +305,6 @@ erDiagram
     repair_calls ||--o{ call_ratings : receives
     repair_calls ||--o{ chat_messages : has
     skills ||--o{ technician_skills : references
-
     users {
         uuid id PK
         string email
@@ -322,7 +316,6 @@ erDiagram
         enum user_type
         timestamp created_at
     }
-
     technicians {
         uuid id PK
         uuid user_id FK
@@ -333,7 +326,6 @@ erDiagram
         boolean is_verified
         jsonb service_area
     }
-
     repair_calls {
         uuid id PK
         uuid customer_id FK
@@ -348,7 +340,6 @@ erDiagram
         timestamp scheduled_at
         timestamp completed_at
     }
-
     call_logs {
         uuid id PK
         uuid call_id FK
@@ -358,14 +349,12 @@ erDiagram
         jsonb metadata
         timestamp created_at
     }
-
     warehouses ||--o{ warehouse_inventory : stocks
     spare_parts ||--o{ warehouse_inventory : stored_in
     spare_parts ||--o{ part_usage : used
     repair_calls ||--o{ part_usage : consumes
     technicians ||--o{ part_pickups : picks_up
     warehouses ||--o{ part_pickups : from
-
     warehouses {
         uuid id PK
         string name
@@ -376,7 +365,6 @@ erDiagram
         boolean is_active
         timestamp created_at
     }
-
     spare_parts {
         uuid id PK
         string sku UK
@@ -388,7 +376,6 @@ erDiagram
         boolean is_active
         timestamp created_at
     }
-
     warehouse_inventory {
         uuid id PK
         uuid warehouse_id FK
@@ -398,7 +385,6 @@ erDiagram
         timestamp last_restocked
         timestamp updated_at
     }
-
     part_pickups {
         uuid id PK
         uuid technician_id FK
@@ -408,7 +394,6 @@ erDiagram
         timestamp pickup_time
         text notes
     }
-
     part_usage {
         uuid id PK
         uuid repair_call_id FK
@@ -468,25 +453,20 @@ flowchart TD
     FindTechs --> FilterSkills[Filter by Required Skills]
     FilterSkills --> FilterDistance[Filter by Service Area - 25km radius]
     FilterDistance --> ScoreTechs[Score Technicians]
-    
     ScoreTechs --> CalcScore[Calculate Score]
-    CalcScore --> |"Rating Weight: 40%"| RatingScore[Rating Score]
-    CalcScore --> |"Distance Weight: 35%"| DistScore[Distance Score]
-    CalcScore --> |"Workload Weight: 25%"| LoadScore[Current Load Score]
-    
+    CalcScore --> |Rating Weight: 40%| RatingScore[Rating Score]
+    CalcScore --> |Distance Weight: 35%| DistScore[Distance Score]
+    CalcScore --> |Workload Weight: 25%| LoadScore[Current Load Score]
     RatingScore --> FinalScore[Combined Score]
     DistScore --> FinalScore
     LoadScore --> FinalScore
-    
     FinalScore --> AutoAssign{Auto-Assign Enabled?}
     AutoAssign --> |Yes| AssignTop[Assign Top Scored Tech]
     AutoAssign --> |No| QueueOps[Queue for Ops Review]
-    
     AssignTop --> NotifyTech[Notify Technician]
     QueueOps --> OpsDecision[Operations Dashboard]
     OpsDecision --> |Override| ManualAssign[Manual Assignment]
     OpsDecision --> |Approve| NotifyTech
-    
     NotifyTech --> TechResponse{Technician Response}
     TechResponse --> |Accept| UpdateStatus[Update Call Status]
     TechResponse --> |Decline| FindNext[Try Next Technician]
@@ -509,34 +489,28 @@ flowchart TD
         ManageStock[Adjust Stock Levels]
         ViewAlerts[View Low Stock Alerts]
     end
-
     subgraph tech [Technician Workflow]
         ViewNearby[View Nearby Warehouses]
         CheckStock[Check Part Availability]
         LogPickup[Log Parts Pickup]
         LogUsage[Log Parts Used on Job]
     end
-
     subgraph system [System Automation]
         StockCheck[Stock Level Monitor]
         AlertGen[Generate Low Stock Alerts]
         CostCalc[Calculate Job Parts Cost]
     end
-
     ManageWH --> WHTable[(warehouses)]
     ManageParts --> PartsTable[(spare_parts)]
     ManageStock --> InvTable[(warehouse_inventory)]
-    
     ViewNearby --> WHTable
     CheckStock --> InvTable
     LogPickup --> PickupsTable[(part_pickups)]
     LogPickup --> |Decrement| InvTable
     LogUsage --> UsageTable[(part_usage)]
-    
     StockCheck --> InvTable
     StockCheck --> |Below Threshold| AlertGen
     AlertGen --> ViewAlerts
-    
     UsageTable --> CostCalc
     CostCalc --> |Job Cost Report| RepairCall[(repair_calls)]
 ```
@@ -631,28 +605,23 @@ flowchart TB
         Static[Static Assets]
         PWA[PWA Shell]
     end
-
     subgraph lb [Load Balancing]
         ALB[Application Load Balancer]
     end
-
     subgraph compute [Compute - ECS/Fargate]
         API1[API Container 1]
         API2[API Container 2]
         Worker[Background Worker]
     end
-
     subgraph data [Data Stores]
         RDS[(RDS PostgreSQL)]
         ElastiCache[(ElastiCache Redis)]
         S3Store[S3 Bucket]
     end
-
     subgraph monitoring [Observability]
         CloudWatch[CloudWatch Logs]
         Sentry[Sentry Error Tracking]
     end
-
     Users[Users] --> cdn
     Users --> ALB
     ALB --> compute
