@@ -1,6 +1,6 @@
 # 🔧 Electronics Repair Platform (EIPlatform)
 
-> A scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow.
+> The purpose of this document is to serve as a proposal of how to develop a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -10,6 +10,7 @@
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [How to use Cursor](#how-to-use-cursor)
 - [Features](#features)
 - [System Architecture](#system-architecture-overview)
 - [Tech Stack](#tech-stack)
@@ -28,6 +29,55 @@
 
 Build a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow. The MVP delivers core call logging, auto-allocation with override, and real-time tracking in 4-6 weeks using React, Node.js, TypeScript, and PostgreSQL as a PWA.
 
+This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok... This has greatly reduced time to test and improves developer output exponentially. 
+
+## How to use Cursor
+
+### 🗨️ Ask Mode (Chat)
+**Best for:** Questions, explanations, and code exploration without making changes.
+- Get explanations of how code works or ask "what does this do?".
+- Explore the codebase semantically.
+- Review code and get suggestions before implementation.
+
+### 🤖 Agent Mode
+**Best for:** Implementing features, fixing bugs, and making multi-file changes.
+- Creates, edits, and deletes files directly across the workspace.
+- Runs terminal commands and installs dependencies.
+- Handles complex refactoring and coordinated logic updates.
+
+### 📋 Plan Mode (Strategic Workflow)
+**Best for:** Mapping out complex features and tracking implementation progress.
+- Ask Cursor to "**Create a implementation plan in a new TODO.md file**" for a feature.
+- Use the generated Markdown file as a roadmap with checkboxes to track your status.
+- Reference the plan file using `@TODO.md` when moving into Agent mode to ensure the AI follows the steps correctly.
+
+### 🐛 Debug Mode
+**Best for:** Identifying and resolving runtime errors, crashes, or logical bugs.
+- **Terminal Integration:** Click "Fix with AI" on terminal errors to instantly analyze the stack trace.
+- **Error Analysis:** Paste logs into Chat and ask "Why is this failing?" to get root-cause analysis.
+- **Bug Hunter:** Ask Cursor to "Look for potential edge cases or bugs in this file" to proactively find issues.
+
+### ✏️ Edit Mode (Inline Ctrl+K)
+**Best for:** Quick, targeted edits to selected code.
+- Highlight code and describe the change (e.g., "add error handling").
+- See a live diff preview before accepting changes.
+
+---
+
+### 💡 Workflow Recommendations
+
+| Task | Recommended Mode |
+|------|------------------|
+| "Explain this complex auth logic" | **Ask** |
+| "Plan the database migration and create a TODO list" | **Plan (via Ask)** |
+| "Build the user profile feature based on @TODO.md" | **Agent** |
+| "Fix the 500 error showing in my terminal" | **Debug / Fix with AI** |
+| "Rename this function and its imports" | **Edit or Agent** |
+
+**Pro Tip:** Always start with **Plan Mode** for large features. Having a `plan.md` file in your workspace helps both you and the Cursor Agent stay aligned on the end goal.
+
+---
+
 ## ✨ Features
 
 ### Core Features (MVP)
@@ -36,12 +86,12 @@ Build a scalable electronics repair platform connecting customers, retailers, an
 - 👨‍🔧 **Technician Management** - Registration, skills, and availability
 - 🤖 **Auto-Allocation Engine** - Intelligent technician assignment with operations override
 - 📍 **Real-time Tracking** - Live status updates via WebSocket
+- 📱 **GPS Tracking** - Real-time technician location updates
 - 🏪 **Multi-Warehouse Inventory** - Spare parts management across multiple locations
 - 📊 **Operations Dashboard** - Call queue, technician grid, and manual assignment
 - ⭐ **Rating System** - Post-completion feedback and ratings
 
 ### Enhanced Features (Phase 2+)
-- 📱 **GPS Tracking** - Real-time technician location updates
 - 💬 **In-App Chat** - Customer-technician messaging
 - 🔔 **Push Notifications** - Web Push API integration
 - 📈 **Advanced Analytics** - Performance metrics and reporting
@@ -133,6 +183,7 @@ flowchart TB
 | Technician Module | ⏳ Pending | auth-system |
 | Allocation Engine | ⏳ Pending | call-management, technician-module |
 | Real-time Updates | ⏳ Pending | allocation-engine |
+| GPS Tracking | ⏳ Pending | real-time-updates |
 | Operations Dashboard | ⏳ Pending | realtime-updates |
 | Rating System | ⏳ Pending | call-management |
 | Inventory System | ⏳ Pending | db-schema, operations-dashboard |
@@ -501,28 +552,28 @@ flowchart TD
 - Total parts cost calculated per repair call
 - Reports available for cost analysis by technician, warehouse, and time period
 
+#### 1.7 GPS Tracking System
+- Real-time technician location updates (throttled to every 60 seconds)
+- Customer-facing ETA and map view
+- Geofencing for arrival detection
+
 ---
 
 ### Phase 2: Enhanced Features (Weeks 7-10)
 
-#### 2.1 GPS Tracking System
-- Real-time technician location updates (throttled to every 30 seconds)
-- Customer-facing ETA and map view
-- Geofencing for arrival detection
-
-#### 2.2 In-App Chat
+#### 2.1 In-App Chat
 - WebSocket-based messaging between customer and technician
 - Message persistence in PostgreSQL
 - File/image sharing capability
 - Read receipts
 
-#### 2.3 Push Notifications
+#### 2.2 Push Notifications
 - Web Push API integration
 - Service worker for background notifications
 - Notification preferences per user
 - Critical vs. informational notification types
 
-#### 2.4 Live Operations Dashboard
+#### 2.3 Live Operations Dashboard
 - Real-time metrics (calls in queue, avg response time, active technicians)
 - Geographic heat map of demand
 - Drag-and-drop call reassignment
