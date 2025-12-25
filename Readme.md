@@ -96,157 +96,9 @@ This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok
 - 🔔 **Push Notifications** - Web Push API integration
 - 📈 **Advanced Analytics** - Performance metrics and reporting
 
-## 🏗️ System Architecture Overview
-
-```mermaid
-flowchart TB
-    subgraph clients [Client Applications - PWA]
-        CustomerApp[Customer Portal]
-        RetailerApp[Retailer Portal]
-        OEMApp[OEM Portal]
-        TechApp[Technician App]
-        OpsApp[Operations Dashboard]
-        AdminApp[Admin Panel]
-    end
-    subgraph api_gateway [API Layer]
-        Gateway[API Gateway / Load Balancer]
-        AuthService[Auth Service]
-    end
-    subgraph services [Backend Services]
-        CallService[Call Management Service]
-        AllocationService[Allocation Engine]
-        TechnicianService[Technician Service]
-        InventoryService[Inventory Service]
-        NotificationService[Notification Service]
-        ChatService[Chat Service]
-        GeoService[Geolocation Service]
-    end
-    subgraph data [Data Layer]
-        PostgreSQL[(PostgreSQL)]
-        Redis[(Redis Cache)]
-        S3[Object Storage]
-    end
-    subgraph realtime [Real-time Layer]
-        WebSocket[WebSocket Server]
-        PushService[Push Notification Service]
-    end
-    clients --> Gateway
-    Gateway --> AuthService
-    Gateway --> services
-    services --> data
-    services --> realtime
-    realtime --> clients
-```
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **React 18** with TypeScript
-- **Vite** for build tooling
-- **TanStack Query** for server state
-- **Zustand** for client state
-- **Socket.io-client** for real-time
-- **Workbox** for PWA/offline support
-- **Tailwind CSS** with custom design system
-- **React Router** for navigation
-- **React Hook Form + Zod** for forms
-
-### Backend
-- **Node.js** with NestJS framework (TypeScript)
-- **PostgreSQL** with PostGIS extension (geospatial queries)
-- **Redis** for caching and session management
-- **Socket.io** for real-time WebSocket connections
-- **Bull** for job queues (notifications, allocation)
-- **JWT** with refresh tokens for authentication
-
-### Infrastructure
-- **AWS ECS Fargate** for containerized compute
-- **RDS PostgreSQL** with PostGIS
-- **ElastiCache Redis**
-- **S3** for object storage
-- **CloudFront CDN** for static assets
-
-## 📊 Project Status
-
-| Task | Status | Dependencies |
-|------|--------|--------------|
-| UI Mockups | ✅ Completed | - |
-| Project Setup | ⏳ Pending | mockups |
-| Database Schema | ⏳ Pending | project-setup |
-| Auth System | ⏳ Pending | db-schema |
-| Call Management | ⏳ Pending | auth-system |
-| Technician Module | ⏳ Pending | auth-system |
-| Allocation Engine | ⏳ Pending | call-management, technician-module |
-| Real-time Updates | ⏳ Pending | allocation-engine |
-| GPS Tracking | ⏳ Pending | real-time-updates |
-| Operations Dashboard | ⏳ Pending | realtime-updates |
-| Rating System | ⏳ Pending | call-management |
-| Inventory System | ⏳ Pending | db-schema, operations-dashboard |
-| Tech Parts Usage | ⏳ Pending | inventory-system, call-management |
-| PWA Setup | ⏳ Pending | call-management |
-| Testing & QA | ⏳ Pending | - |
-| Deployment | ⏳ Pending | project-setup |
-
-**Legend:** ✅ Completed | ⏳ Pending | 🚧 In Progress
-
 ## 🚀 Getting Started
 
-### Prerequisites
 
-- Node.js 18+ and npm/yarn
-- PostgreSQL 14+ with PostGIS extension
-- Redis 6+
-- Docker (optional, for containerized development)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/EIPlatform.git
-cd EIPlatform
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configuration
-
-# Start PostgreSQL and Redis (using Docker)
-docker-compose up -d
-
-# Run database migrations
-npm run db:migrate
-
-# Start development servers
-npm run dev
-```
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/eiplatform
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-POSTGRES_USER=user
-POSTGRES_PASSWORD=password
-POSTGRES_DB=eiplatform
-
-# Redis
-REDIS_HOST=localhost
-REDIS_PORT=6379
-
-# JWT
-JWT_SECRET=your-secret-key
-JWT_REFRESH_SECRET=your-refresh-secret-key
-
-# AWS (for production)
-AWS_REGION=us-east-1
-AWS_S3_BUCKET=your-bucket-name
-```
 
 ## 📅 Development Roadmap
 
@@ -293,7 +145,100 @@ Create interactive mockups for all user portals before development begins.
 - Skills and device categories management
 - System configuration
 
-#### 1.2 Database Schema Design
+#### 1.2 🏗️ System Architecture Overview
+
+```mermaid
+flowchart TB
+    subgraph clients [Client Applications - PWA]
+        CustomerApp[Customer Portal]
+        RetailerApp[Retailer Portal]
+        OEMApp[OEM Portal]
+        TechApp[Technician App]
+        OpsApp[Operations Dashboard]
+        AdminApp[Admin Panel]
+    end
+    subgraph api_gateway [API Layer]
+        Gateway[API Gateway / Load Balancer]
+        AuthService[Auth Service]
+    end
+    subgraph services [Backend Services]
+        CallService[Call Management Service]
+        AllocationService[Allocation Engine]
+        TechnicianService[Technician Service]
+        InventoryService[Inventory Service]
+        NotificationService[Notification Service]
+        ChatService[Chat Service]
+        GeoService[Geolocation Service]
+    end
+    subgraph data [Data Layer]
+        PostgreSQL[(PostgreSQL)]
+        Redis[(Redis Cache)]
+        S3[Object Storage]
+    end
+    subgraph realtime [Real-time Layer]
+        WebSocket[WebSocket Server]
+        PushService[Push Notification Service]
+    end
+    clients --> Gateway
+    Gateway --> AuthService
+    Gateway --> services
+    services --> data
+    services --> realtime
+    realtime --> clients
+```
+
+#### 🛠️ Tech Stack
+
+##### Frontend
+- **React 18** with TypeScript
+- **Vite** for build tooling
+- **TanStack Query** for server state
+- **Zustand** for client state
+- **Socket.io-client** for real-time
+- **Workbox** for PWA/offline support
+- **Tailwind CSS** with custom design system
+- **React Router** for navigation
+- **React Hook Form + Zod** for forms
+
+##### Backend
+- **Node.js** with NestJS framework (TypeScript)
+- **PostgreSQL** with PostGIS extension (geospatial queries)
+- **Redis** for caching and session management
+- **Socket.io** for real-time WebSocket connections
+- **Bull** for job queues (notifications, allocation)
+- **JWT** with refresh tokens for authentication
+
+##### Infrastructure
+- **AWS ECS Fargate** for containerized compute
+- **RDS PostgreSQL** with PostGIS
+- **ElastiCache Redis**
+- **S3** for object storage
+- **CloudFront CDN** for static assets
+
+###### 📊 Project Status
+
+| Task | Status | Dependencies |
+|------|--------|--------------|
+| UI Mockups | ✅ Completed | - |
+| Project Setup | ⏳ Pending | mockups |
+| Database Schema | ⏳ Pending | project-setup |
+| Auth System | ⏳ Pending | db-schema |
+| Call Management | ⏳ Pending | auth-system |
+| Technician Module | ⏳ Pending | auth-system |
+| Allocation Engine | ⏳ Pending | call-management, technician-module |
+| Real-time Updates | ⏳ Pending | allocation-engine |
+| GPS Tracking | ⏳ Pending | real-time-updates |
+| Operations Dashboard | ⏳ Pending | realtime-updates |
+| Rating System | ⏳ Pending | call-management |
+| Inventory System | ⏳ Pending | db-schema, operations-dashboard |
+| Tech Parts Usage | ⏳ Pending | inventory-system, call-management |
+| PWA Setup | ⏳ Pending | call-management |
+| Testing & QA | ⏳ Pending | - |
+| Deployment | ⏳ Pending | project-setup |
+
+**Legend:** ✅ Completed | ⏳ Pending | 🚧 In Progress
+
+#### 1.3 Database Schema Design
 
 ```mermaid
 erDiagram
@@ -406,7 +351,7 @@ erDiagram
     }
 ```
 
-#### 1.3 Backend Architecture
+#### 1.4 Backend Architecture
 
 **Core API Modules:**
 
@@ -424,7 +369,7 @@ erDiagram
 | Pickups | `/pickups/*` | Technician part pickups from warehouses |
 | PartUsage | `/calls/:id/parts/*` | Log parts used on repair calls |
 
-#### 1.4 Frontend Architecture
+#### 1.5 Frontend Architecture
 
 **Project Structure:**
 
@@ -444,7 +389,7 @@ src/
   utils/            # Helpers
 ```
 
-#### 1.5 Allocation Engine Logic
+#### 1.6 Allocation Engine Logic
 
 ```mermaid
 flowchart TD
@@ -473,7 +418,7 @@ flowchart TD
     FindNext --> ScoreTechs
 ```
 
-#### 1.6 Spare Parts Inventory System
+#### 1.7 Spare Parts Inventory System
 
 **Multi-Warehouse Architecture:**
 - Multiple warehouses per zip code for geographic coverage
@@ -526,7 +471,7 @@ flowchart TD
 - Total parts cost calculated per repair call
 - Reports available for cost analysis by technician, warehouse, and time period
 
-#### 1.7 GPS Tracking System
+#### 1.8 GPS Tracking System
 - Real-time technician location updates (throttled to every 60 seconds)
 - Customer-facing ETA and map view
 - Geofencing for arrival detection
