@@ -15,7 +15,7 @@
 - [System Architecture](#system-architecture-overview)
 - [Tech Stack](#tech-stack)
 - [Project Status](#project-status)
-- [Getting Started](#getting-started)
+- [Team Collaboration & Development Process](#team-collaboration--development-process)
 - [Development Roadmap](#development-roadmap)
   - [Phase 1: MVP (Weeks 1-6)](#phase-1-mvp-weeks-1-6---core-platform)
   - [Phase 2: Enhanced Features (Weeks 7-10)](#phase-2-enhanced-features-weeks-7-10)
@@ -31,40 +31,40 @@ Build a scalable electronics repair platform connecting customers, retailers, an
 
 This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok... This has greatly reduced time to test and improves developer output exponentially. 
 
-## How to use Cursor
+### How to use Cursor
 
-### 🗨️ Ask Mode (Chat)
+#### 🗨️ Ask Mode (Chat)
 **Best for:** Questions, explanations, and code exploration without making changes.
 - Get explanations of how code works or ask "what does this do?".
 - Explore the codebase semantically.
 - Review code and get suggestions before implementation.
 
-### 🤖 Agent Mode
+#### 🤖 Agent Mode
 **Best for:** Implementing features, fixing bugs, and making multi-file changes.
 - Creates, edits, and deletes files directly across the workspace.
 - Runs terminal commands and installs dependencies.
 - Handles complex refactoring and coordinated logic updates.
 
-### 📋 Plan Mode (Strategic Workflow)
+#### 📋 Plan Mode (Strategic Workflow)
 **Best for:** Mapping out complex features and tracking implementation progress.
 - Ask Cursor to "**Create a implementation plan in a new TODO.md file**" for a feature.
 - Use the generated Markdown file as a roadmap with checkboxes to track your status.
 - Reference the plan file using `@TODO.md` when moving into Agent mode to ensure the AI follows the steps correctly.
 
-### 🐛 Debug Mode
+#### 🐛 Debug Mode
 **Best for:** Identifying and resolving runtime errors, crashes, or logical bugs.
 - **Terminal Integration:** Click "Fix with AI" on terminal errors to instantly analyze the stack trace.
 - **Error Analysis:** Paste logs into Chat and ask "Why is this failing?" to get root-cause analysis.
 - **Bug Hunter:** Ask Cursor to "Look for potential edge cases or bugs in this file" to proactively find issues.
 
-### ✏️ Edit Mode (Inline Ctrl+K)
+#### ✏️ Edit Mode (Inline Ctrl+K)
 **Best for:** Quick, targeted edits to selected code.
 - Highlight code and describe the change (e.g., "add error handling").
 - See a live diff preview before accepting changes.
 
 ---
 
-### 💡 Workflow Recommendations
+#### 💡 Workflow Recommendations
 
 | Task | Recommended Mode |
 |------|------------------|
@@ -79,6 +79,7 @@ This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok
 ---
 
 ## ✨ Features
+We list the main features expected in the app here.
 
 ### Core Features (MVP)
 - 🔐 **JWT Authentication** with role-based access control
@@ -96,9 +97,30 @@ This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok
 - 🔔 **Push Notifications** - Web Push API integration
 - 📈 **Advanced Analytics** - Performance metrics and reporting
 
-## 🚀 Getting Started
+## 🚀 Team Collaboration & Development Process
 
+This project follows a structured but flexible, test-driven approach designed for remote development teams. Our goal is to maintain high code quality and business alignment through short, iterative cycles.
 
+### 🏗️ Architecture & Design
+The solution is built on a **microservice and task-based architecture**. This allows features to be isolated, developed, and tested independently, reducing deployment risks and improving scalability.
+
+### 🔄 Development Sprint Framework (Short Feature Sprints)
+Development proceeds in rapid, test-oriented sprints focused on specific functional units:
+
+1.  **Functional Definition**: For every task, we first agree on a **Functional Test / Use Case**. This serves as the "source of truth" for what constitutes success.
+2.  **Implementation (2-Day Sprints)**: Developers work remotely to implement the feature within a short window (typically ~48 hours).
+3.  **Business Validation**: Once implementation is complete, the feature is immediately tested by the business/stakeholders against the agreed use case.
+4.  **Unit Testing Phase**: After the functional implementation is validated and "works," developers must then build **detailed unit tests** for every function within that task to ensure long-term stability and regression protection.
+
+### 👥 Team Structure & Onboarding
+- **Remote-First**: All developers work remotely. 
+- **Selection Process**: Team members are selected through a rigorous **CV and technical review** process to ensure alignment with our tech stack and methodology.
+- **Initial Step**: The project begins with a shared agreement on the **MVP (Minimum Viable Product)**. 
+- **Iterative Planning**: The MVP is split into functional chunks/tasks that are implemented iteratively using the sprint framework described above.
+
+> **Note on Process Evolution**: This collaboration model is expected to evolve to ensure developers remain productive and are not stalled waiting for business approval. The precise cadence and workflow will be refined once development begins, requiring tight and continuous communication between the developers and the business stakeholders.
+
+---
 
 ## 📅 Development Roadmap
 
