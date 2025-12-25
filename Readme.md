@@ -11,12 +11,10 @@
 
 - [Overview](#overview)
 - [How to use Cursor](#how-to-use-cursor)
-- [Features](#features)
-- [System Architecture](#system-architecture-overview)
-- [Tech Stack](#tech-stack)
-- [Project Status](#project-status)
 - [Team Collaboration & Development Process](#team-collaboration--development-process)
 - [Development Roadmap](#development-roadmap)
+  - [System Architecture](#system-architecture-overview)
+  - [Tech Stack](#tech-stack)
   - [Phase 1: MVP (Weeks 1-6)](#phase-1-mvp-weeks-1-6---core-platform)
   - [Phase 2: Enhanced Features (Weeks 7-10)](#phase-2-enhanced-features-weeks-7-10)
   - [Phase 3: Scale and Optimize (Weeks 11-14)](#phase-3-scale-and-optimize-weeks-11-14)
@@ -78,25 +76,6 @@ This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok
 
 ---
 
-## ✨ Features
-We list the main features expected in the app here.
-
-### Core Features (MVP)
-- 🔐 **JWT Authentication** with role-based access control
-- 📞 **Call Management** - Create, track, and manage repair calls
-- 👨‍🔧 **Technician Management** - Registration, skills, and availability
-- 🤖 **Auto-Allocation Engine** - Intelligent technician assignment with operations override
-- 📍 **Real-time Tracking** - Live status updates via WebSocket
-- 📱 **GPS Tracking** - Real-time technician location updates
-- 🏪 **Multi-Warehouse Inventory** - Spare parts management across multiple locations
-- 📊 **Operations Dashboard** - Call queue, technician grid, and manual assignment
-- ⭐ **Rating System** - Post-completion feedback and ratings
-
-### Enhanced Features (Phase 2+)
-- 💬 **In-App Chat** - Customer-technician messaging
-- 🔔 **Push Notifications** - Web Push API integration
-- 📈 **Advanced Analytics** - Performance metrics and reporting
-
 ## 🚀 Team Collaboration & Development Process
 
 This project follows a structured but flexible, test-driven approach designed for remote development teams. Our goal is to maintain high code quality and business alignment through short, iterative cycles.
@@ -123,6 +102,76 @@ Development proceeds in rapid, test-oriented sprints focused on specific functio
 ---
 
 ## 📅 Development Roadmap
+
+### 🏗️ System Architecture Overview
+
+```mermaid
+flowchart TB
+    subgraph clients [Client Applications - PWA]
+        CustomerApp[Customer Portal]
+        RetailerApp[Retailer Portal]
+        OEMApp[OEM Portal]
+        TechApp[Technician App]
+        OpsApp[Operations Dashboard]
+        AdminApp[Admin Panel]
+    end
+    subgraph api_gateway [API Layer]
+        Gateway[API Gateway / Load Balancer]
+        AuthService[Auth Service]
+    end
+    subgraph services [Backend Services]
+        CallService[Call Management Service]
+        AllocationService[Allocation Engine]
+        TechnicianService[Technician Service]
+        InventoryService[Inventory Service]
+        NotificationService[Notification Service]
+        ChatService[Chat Service]
+        GeoService[Geolocation Service]
+    end
+    subgraph data [Data Layer]
+        PostgreSQL[(PostgreSQL)]
+        Redis[(Redis Cache)]
+        S3[Object Storage]
+    end
+    subgraph realtime [Real-time Layer]
+        WebSocket[WebSocket Server]
+        PushService[Push Notification Service]
+    end
+    clients --> Gateway
+    Gateway --> AuthService
+    Gateway --> services
+    services --> data
+    services --> realtime
+    realtime --> clients
+```
+
+### 🛠️ Tech Stack
+
+#### Frontend
+- **React 18** with TypeScript
+- **Vite** for build tooling
+- **TanStack Query** for server state
+- **Zustand** for client state
+- **Socket.io-client** for real-time
+- **Workbox** for PWA/offline support
+- **Tailwind CSS** with custom design system
+- **React Router** for navigation
+- **React Hook Form + Zod** for forms
+
+#### Backend
+- **Node.js** with NestJS framework (TypeScript)
+- **PostgreSQL** with PostGIS extension (geospatial queries)
+- **Redis** for caching and session management
+- **Socket.io** for real-time WebSocket connections
+- **Bull** for job queues (notifications, allocation)
+- **JWT** with refresh tokens for authentication
+
+#### Infrastructure
+- **AWS ECS Fargate** for containerized compute
+- **RDS PostgreSQL** with PostGIS
+- **ElastiCache Redis**
+- **S3** for object storage
+- **CloudFront CDN** for static assets
 
 ### Phase 1: MVP (Weeks 1-6) - Core Platform
 
@@ -167,100 +216,7 @@ Create interactive mockups for all user portals before development begins.
 - Skills and device categories management
 - System configuration
 
-#### 1.2 🏗️ System Architecture Overview
-
-```mermaid
-flowchart TB
-    subgraph clients [Client Applications - PWA]
-        CustomerApp[Customer Portal]
-        RetailerApp[Retailer Portal]
-        OEMApp[OEM Portal]
-        TechApp[Technician App]
-        OpsApp[Operations Dashboard]
-        AdminApp[Admin Panel]
-    end
-    subgraph api_gateway [API Layer]
-        Gateway[API Gateway / Load Balancer]
-        AuthService[Auth Service]
-    end
-    subgraph services [Backend Services]
-        CallService[Call Management Service]
-        AllocationService[Allocation Engine]
-        TechnicianService[Technician Service]
-        InventoryService[Inventory Service]
-        NotificationService[Notification Service]
-        ChatService[Chat Service]
-        GeoService[Geolocation Service]
-    end
-    subgraph data [Data Layer]
-        PostgreSQL[(PostgreSQL)]
-        Redis[(Redis Cache)]
-        S3[Object Storage]
-    end
-    subgraph realtime [Real-time Layer]
-        WebSocket[WebSocket Server]
-        PushService[Push Notification Service]
-    end
-    clients --> Gateway
-    Gateway --> AuthService
-    Gateway --> services
-    services --> data
-    services --> realtime
-    realtime --> clients
-```
-
-#### 🛠️ Tech Stack
-
-##### Frontend
-- **React 18** with TypeScript
-- **Vite** for build tooling
-- **TanStack Query** for server state
-- **Zustand** for client state
-- **Socket.io-client** for real-time
-- **Workbox** for PWA/offline support
-- **Tailwind CSS** with custom design system
-- **React Router** for navigation
-- **React Hook Form + Zod** for forms
-
-##### Backend
-- **Node.js** with NestJS framework (TypeScript)
-- **PostgreSQL** with PostGIS extension (geospatial queries)
-- **Redis** for caching and session management
-- **Socket.io** for real-time WebSocket connections
-- **Bull** for job queues (notifications, allocation)
-- **JWT** with refresh tokens for authentication
-
-##### Infrastructure
-- **AWS ECS Fargate** for containerized compute
-- **RDS PostgreSQL** with PostGIS
-- **ElastiCache Redis**
-- **S3** for object storage
-- **CloudFront CDN** for static assets
-
-###### 📊 Project Status
-
-| Task | Status | Dependencies |
-|------|--------|--------------|
-| UI Mockups | ✅ Completed | - |
-| Project Setup | ⏳ Pending | mockups |
-| Database Schema | ⏳ Pending | project-setup |
-| Auth System | ⏳ Pending | db-schema |
-| Call Management | ⏳ Pending | auth-system |
-| Technician Module | ⏳ Pending | auth-system |
-| Allocation Engine | ⏳ Pending | call-management, technician-module |
-| Real-time Updates | ⏳ Pending | allocation-engine |
-| GPS Tracking | ⏳ Pending | real-time-updates |
-| Operations Dashboard | ⏳ Pending | realtime-updates |
-| Rating System | ⏳ Pending | call-management |
-| Inventory System | ⏳ Pending | db-schema, operations-dashboard |
-| Tech Parts Usage | ⏳ Pending | inventory-system, call-management |
-| PWA Setup | ⏳ Pending | call-management |
-| Testing & QA | ⏳ Pending | - |
-| Deployment | ⏳ Pending | project-setup |
-
-**Legend:** ✅ Completed | ⏳ Pending | 🚧 In Progress
-
-#### 1.3 Database Schema Design
+#### 1.2 Database Schema Design
 
 ```mermaid
 erDiagram
@@ -373,7 +329,7 @@ erDiagram
     }
 ```
 
-#### 1.4 Backend Architecture
+#### 1.3 Backend Architecture
 
 **Core API Modules:**
 
@@ -391,7 +347,7 @@ erDiagram
 | Pickups | `/pickups/*` | Technician part pickups from warehouses |
 | PartUsage | `/calls/:id/parts/*` | Log parts used on repair calls |
 
-#### 1.5 Frontend Architecture
+#### 1.4 Frontend Architecture
 
 **Project Structure:**
 
@@ -411,7 +367,7 @@ src/
   utils/            # Helpers
 ```
 
-#### 1.6 Allocation Engine Logic
+#### 1.5 Allocation Engine Logic
 
 ```mermaid
 flowchart TD
@@ -440,7 +396,7 @@ flowchart TD
     FindNext --> ScoreTechs
 ```
 
-#### 1.7 Spare Parts Inventory System
+#### 1.6 Spare Parts Inventory System
 
 **Multi-Warehouse Architecture:**
 - Multiple warehouses per zip code for geographic coverage
@@ -493,7 +449,7 @@ flowchart TD
 - Total parts cost calculated per repair call
 - Reports available for cost analysis by technician, warehouse, and time period
 
-#### 1.8 GPS Tracking System
+#### 1.7 GPS Tracking System
 - Real-time technician location updates (throttled to every 60 seconds)
 - Customer-facing ETA and map view
 - Geofencing for arrival detection
