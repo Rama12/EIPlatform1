@@ -1,4 +1,4 @@
-# 🔧 Electronics Repair Platform (EIPlatform)
+# 🔧 Electronics Repair Platform (ERP)
 
 > The purpose of this document is to serve as a proposal of how to develop a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow.
 

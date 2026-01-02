@@ -61,7 +61,7 @@ export function PortalSelector() {
               <img src={logo} alt="Logo" className="w-full h-full object-cover" />
             </div>
             <p className="text-xl text-surface-500">
-              Electronics Repair Management System
+              Electronics Repair Platform (ERP)
             </p>
           </div>
           <LogoutButton />
