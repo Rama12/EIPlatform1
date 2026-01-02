@@ -25,7 +25,7 @@
 
 ## 🎯 Overview
 
-Build a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians through an operations-managed workflow. The MVP delivers core call logging, auto-allocation with override, and real-time tracking in 4-6 weeks using React, Node.js, TypeScript, and PostgreSQL as a PWA.
+Build a scalable electronics repair platform connecting customers, retailers, and OEMs with technicians while managing billing and parts inventory, through an operations-managed workflow. The MVP delivers core call logging, auto-allocation with override, billing, parts inventory and real-time tracking in 4-6 weeks using React, Node.js, TypeScript, and PostgreSQL as a PWA.
 
 This plan and the mockup pages have been built using Cursor + Opus, Gemini, Grok... This has greatly reduced time to test and improves developer output exponentially. 
 
@@ -93,7 +93,7 @@ Development proceeds in rapid, test-oriented sprints focused on  specific functi
 
 ### 👥 Team Structure & Onboarding
 - **Remote-First**: The project is designed for a fully remote-first development workflow.
-- **Team members**: CVs will need to be reviewed to ensure alignment with our tech stack and methodology.
+- **Team members**: CVs to be submitted and reviewed before start of development to ensure alignment with our tech stack and methodology.
 - **Initial Step**: The project begins with a shared agreement on the **MVP (Minimum Viable Product)** and its design. 
 - **Iterative Planning**: The MVP is split into functional chunks/tasks that are implemented iteratively using the sprint framework described above.
 
@@ -206,7 +206,7 @@ Create interactive mockups for all user portals before development begins.
 - Escalation management
 - Basic analytics widgets
 - Warehouse management (CRUD, locations by zip code)
-- Spare parts catalog management (SKU, name, cost price)
+- Spare parts purchase and use management (SKU, name, cost price)
 - Inventory levels per warehouse (stock in/out, adjustments)
 - Low stock alerts dashboard with configurable thresholds
 
@@ -516,7 +516,7 @@ flowchart TD
 1. **PR Reviews**: All code requires review before merge
 2. **Automated CI**: Tests run on every push
 3. **Staging Environment**: Mirror of production for UAT
-4. **Load Testing**: Simulate 1000 concurrent users before launch
+4. **Load Testing**: Simulate 100 concurrent users(technician gps and other users) before launch
 
 ---
 
