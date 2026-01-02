@@ -84,17 +84,17 @@ This project follows a structured but flexible, test-driven approach designed fo
 The solution is built on a **microservice and task-based architecture**. This allows features to be isolated, developed, and tested independently, reducing deployment risks and improving scalability.
 
 ### 🔄 Development Sprint Framework (Short Feature Sprints)
-Development proceeds in rapid, test-oriented sprints focused on specific functional units:
+Development proceeds in rapid, test-oriented sprints focused on  discrete functional use-cases:
 
-1.  **Functional Definition**: For every task, we first agree on a **Functional Test / Use Case**. This serves as the "source of truth" for what constitutes success.
+1.  **Functional Definition**: For every sprint, we first agree on a **Functional Test / Use Case**. This serves as the "source of truth" for what constitutes success.
 2.  **Implementation (2-Day Sprints)**: Developers work remotely to implement the feature within a short window (typically ~48 hours).
-3.  **Business Validation**: Once implementation is complete, the feature is immediately tested by the business/stakeholders against the agreed use case.
+3.  **Business Validation**: Twice a week, on Wednesday and Saturday, there will be a stake holder review to cover any blockers, design questions, or feature clarifications. Ideally the feature of the sprint is demonstrated and stakeholders are given a UAT environment for testing.
 4.  **Unit Testing Phase**: After the functional implementation is validated and "works," developers must then build **detailed unit tests** for every function within that task to ensure long-term stability and regression protection.
 
 ### 👥 Team Structure & Onboarding
-- **Remote-First**: All developers work remotely. 
-- **Selection Process**: Team members are selected through a rigorous **CV and technical review** process to ensure alignment with our tech stack and methodology.
-- **Initial Step**: The project begins with a shared agreement on the **MVP (Minimum Viable Product)**. 
+- **Remote-First**: Project environment should be structured such that all developers can work remotely. 
+- **Team members**: CVs will need to be reviewd to ensure alignment with our tech stack and methodology.
+- **Initial Step**: The project begins with a shared agreement on the **MVP (Minimum Viable Product)** and its design. 
 - **Iterative Planning**: The MVP is split into functional chunks/tasks that are implemented iteratively using the sprint framework described above.
 
 > **Note on Process Evolution**: This collaboration model is expected to evolve to ensure developers remain productive and are not stalled waiting for business approval. The precise cadence and workflow will be refined once development begins, requiring tight and continuous communication between the developers and the business stakeholders.
