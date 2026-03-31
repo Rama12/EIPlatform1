@@ -55,26 +55,25 @@ flowchart LR
     subgraph Core["Core Platform"]
         API[Go Core API<br/>Auth, Calls, Manual Assignment,<br/>Inventory, GPS, Invoicing]
         WS[Socket.io / WebSocket Gateway]
-    end
+        subgraph MQ["RabbitMQ Messaging Layer"]
+            EX1[Exchange<br/>serviceops.events]
+            EX2[Exchange<br/>serviceops.commands]
+            RETRY[Exchange<br/>serviceops.retry]
+            DLQ[Exchange<br/>serviceops.dlq]
+            QN[Queue<br/>notifications.whatsapp]
+            QR[Queue<br/>realtime.updates]
+            QF[Queue<br/>files.process]
+            QW[Queue<br/>workflow.alerts]
+            QREP[Queue<br/>reporting.projections]
+        end
 
-    subgraph MQ["RabbitMQ Messaging Layer"]
-        EX1[Exchange<br/>serviceops.events]
-        EX2[Exchange<br/>serviceops.commands]
-        RETRY[Exchange<br/>serviceops.retry]
-        DLQ[Exchange<br/>serviceops.dlq]
-        QN[Queue<br/>notifications.whatsapp]
-        QR[Queue<br/>realtime.updates]
-        QF[Queue<br/>files.process]
-        QW[Queue<br/>workflow.alerts]
-        QREP[Queue<br/>reporting.projections]
-    end
-
-    subgraph Workers
-        NOTIF[Notification Worker]
-        REAL[Realtime Worker]
-        FILE[File Worker]
-        FLOW[Workflow Worker]
-        REPORT[Reporting Worker]
+        subgraph Workers
+            NOTIF[Notification Worker]
+            REAL[Realtime Worker]
+            FILE[File Worker]
+            FLOW[Workflow Worker]
+            REPORT[Reporting Worker]
+        end
     end
 
     subgraph Data
