@@ -55,18 +55,7 @@ flowchart LR
     subgraph Core["Core Platform"]
         API[Go Core API<br/>Auth, Calls, Manual Assignment,<br/>Inventory, GPS, Invoicing]
         WS[Socket.io / WebSocket Gateway]
-        subgraph MQ["RabbitMQ Messaging Layer"]
-            EX1[Exchange<br/>serviceops.events]
-            EX2[Exchange<br/>serviceops.commands]
-            RETRY[Exchange<br/>serviceops.retry]
-            DLQ[Exchange<br/>serviceops.dlq]
-            QN[Queue<br/>notifications.whatsapp]
-            QR[Queue<br/>realtime.updates]
-            QF[Queue<br/>files.process]
-            QW[Queue<br/>workflow.alerts]
-            QREP[Queue<br/>reporting.projections]
-        end
-
+        MQ[RabbitMQ]
         subgraph Workers
             NOTIF[Notification Worker]
             REAL[Realtime Worker]
@@ -94,24 +83,17 @@ flowchart LR
     API --> S3
     API --> OTP
     API --> MAPS
-    API --> EX1
-    API --> EX2
+    API --> MQ
 
-    EX1 --> QN --> NOTIF --> WA
-    EX1 --> QR --> REAL --> WS
-    EX1 --> QREP --> REPORT --> PG
-    EX2 --> QF --> FILE --> S3
-    EX2 --> QW --> FLOW --> PG
-
-    QN -.failed.-> RETRY
-    QR -.failed.-> RETRY
-    QF -.failed.-> RETRY
-    QW -.failed.-> RETRY
-    RETRY -.exhausted.-> DLQ
+    MQ --> NOTIF --> WA
+    MQ --> REAL --> WS
+    MQ --> FILE --> S3
+    MQ --> FLOW --> PG
+    MQ --> REPORT --> PG
 
     class PWA,ENGAPP client;
     class API,WS core;
-    class EX1,EX2,RETRY,DLQ,QN,QR,QF,QW,QREP,NOTIF,REAL,FILE,FLOW,REPORT async;
+    class MQ,NOTIF,REAL,FILE,FLOW,REPORT async;
     class PG,S3 data;
     class OTP,WA,MAPS ext;
 ```
@@ -143,7 +125,7 @@ flowchart LR
     subgraph Core
         API[Go Core API<br/>Calls, Inventory, Admin, GPS]
         WS[Realtime Gateway]
-        MQ[RabbitMQ<br/>events / commands / retry / dlq]
+        MQ[RabbitMQ]
     end
 
     subgraph Services
@@ -222,7 +204,7 @@ flowchart LR
 
     subgraph Edge
         BFF[API Gateway / BFF]
-        MQ[RabbitMQ Backbone<br/>serviceops.events / commands / retry / dlq]
+        MQ[RabbitMQ Backbone]
     end
 
     subgraph Services
@@ -287,6 +269,8 @@ Key characteristics of this phase:
 
 RabbitMQ is the backend communication layer between workers and services. It is not the primary request-response transport for clients. User-facing CRUD requests continue to go through HTTP and WebSocket endpoints.
 
+The diagrams above intentionally show RabbitMQ as a single platform component for readability. The exact queues and their responsibilities are documented in the tables below.
+
 ### Exchanges
 
 - `serviceops.events`
@@ -302,20 +286,24 @@ RabbitMQ is the backend communication layer between workers and services. It is 
 
 ### Initial Queues
 
-- `notifications.whatsapp`
-- `realtime.updates`
-- `files.process`
-- `workflow.alerts`
-- `reporting.projections`
+| Queue | Function |
+|-------|----------|
+| `notifications.whatsapp` | Processes MVP WhatsApp notifications such as call registration, engineer assignment, and job closure messages. |
+| `realtime.updates` | Fans out status changes and operational updates to connected web and mobile clients through Socket.io/WebSocket. |
+| `files.process` | Handles asynchronous image compression, resizing, and file post-processing before or after S3 storage. |
+| `workflow.alerts` | Runs SLA timers, overdue checks, non-response alerts, and other operational background workflow triggers. |
+| `reporting.projections` | Builds reporting-ready projections, summary tables, or materialized-view refresh triggers from operational events. |
 
 ### Later Queues
 
-- `notifications.email`
-- `notifications.sms`
-- `notifications.push`
-- `billing.payments`
-- `allocation.run`
-- `chat.events`
+| Queue | Function |
+|-------|----------|
+| `notifications.email` | Sends email notifications for status changes, invoices, receipts, and alert workflows. |
+| `notifications.sms` | Sends critical SMS alerts where faster or fallback delivery is needed. |
+| `notifications.push` | Sends push notifications to Flutter mobile apps using FCM and APNs. |
+| `billing.payments` | Processes payment events, reconciliation tasks, payout triggers, and payment provider callbacks. |
+| `allocation.run` | Executes auto-assignment and auto-reassignment workflows using skills, proximity, ratings, and workload signals. |
+| `chat.events` | Processes chat-related async events such as delivery fan-out, attachment handling, and notification triggers. |
 
 ### Event Envelope
 
