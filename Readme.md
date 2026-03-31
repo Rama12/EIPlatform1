@@ -65,15 +65,18 @@ flowchart LR
         end
     end
 
-    subgraph Data
-        PG[(PostgreSQL + PostGIS)]
-        S3[(S3 / MinIO)]
-    end
+    subgraph Support["Dependencies"]
+        direction TB
+        subgraph External
+            OTP[OTP Provider]
+            WA[WhatsApp Business API]
+            MAPS[Google Maps API]
+        end
 
-    subgraph External
-        OTP[OTP Provider]
-        WA[WhatsApp Business API]
-        MAPS[Google Maps API]
+        subgraph Data
+            PG[(PostgreSQL + PostGIS)]
+            S3[(S3 / MinIO)]
+        end
     end
 
     PWA --> API
@@ -90,9 +93,6 @@ flowchart LR
     MQ --> FILE --> S3
     MQ --> FLOW --> PG
     MQ --> REPORT --> PG
-
-    PG ~~~ OTP
-    S3 ~~~ MAPS
 
     class PWA,ENGAPP client;
     class API,WS core;
