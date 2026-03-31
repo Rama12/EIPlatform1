@@ -91,6 +91,9 @@ flowchart LR
     MQ --> FLOW --> PG
     MQ --> REPORT --> PG
 
+    PG ~~~ OTP
+    S3 ~~~ MAPS
+
     class PWA,ENGAPP client;
     class API,WS core;
     class MQ,NOTIF,REAL,FILE,FLOW,REPORT async;
